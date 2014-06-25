@@ -36,6 +36,7 @@
 					<?php $selected1 =  '' ?>
 					<?php $selected2 =  '' ?>
 					<?php $selected3 =  '' ?>
+					<?php $selected4 =  '' ?>
 					
 					<?php if (@$detail[0]['level'] == "A"):?>
 						<?php $selected1 =  'selected="selected"' ?>
@@ -43,16 +44,20 @@
 						<?php $selected2 =  'selected="selected"' ?>
 					<?php elseif (@$detail[0]['level'] == "KD") :?>
 						<?php $selected3 =  'selected="selected"' ?>
+					<?php elseif (@$detail[0]['level'] == "PL") :?>
+						<?php $selected4 =  'selected="selected"' ?>
 					<?php else:?>
 						<?php $selected1 =  '' ?>
 						<?php $selected2 =  '' ?>
 						<?php $selected3 =  '' ?>
+						<?php $selected4 =  '' ?>
 					<?php endif;?>
 				
 					<option value="">-- Pilih salah satu --</option>
 					<option value="A"  <?php echo $selected1 ?>>Administrator</option>
 					<option value="AM" <?php echo $selected2 ?>>Account Manager</option>
 					<option value="KD" <?php echo $selected3 ?>>Kepala Departemen</option>
+					<option value="PL" <?php echo $selected4 ?>>Pelanggan</option>
 				</select>
 			</div>
 		</div>

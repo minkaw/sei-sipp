@@ -34,7 +34,11 @@
 	        	<div class="menuextras">
 					<div class="extras">
 						<ul>
-			        		<li>Selamat datang, Hanif | <a href="#">Login</a></li>
+							<?php if($this->session->userdata('usernamePelanggan')): ?>
+								<li>Selamat datang,<?php echo $this->session->userdata('usernamePelanggan'); ?> | <a href="<?php echo base_url('home/login/logout') ?>">Log out</a></li>
+							<?php else:?>
+								<li>Selamat datang di halaman utama PT. SEI | <a href="<?php echo base_url('home/login') ?>">Login</a></li>
+							<?php endif;?>
 			        	</ul>
 					</div>
 		        </div>

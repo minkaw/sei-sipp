@@ -7,9 +7,10 @@ class tpelanggan extends CI_Model{
 		parent::__construct();
 	}
 	
-	function setData($id_plgn,$nama_plgn,$alamat_plgn,$cp_plgn,$nik,$status_plgn,$daftar_po)
+	function setData($id_plgn,$no_pelanggan,$nama_plgn,$alamat_plgn,$cp_plgn,$nik,$status_plgn,$daftar_po)
 	{
 		$this->id_plgn= $id_plgn;
+		$this->no_pelanggan= $no_pelanggan;
 		$this->nama_plgn= $nama_plgn;
 		$this->alamat_plgn= $alamat_plgn;
 		$this->cp_plgn= $cp_plgn;
@@ -34,6 +35,7 @@ class tpelanggan extends CI_Model{
 	{		
 		$arrayData = array(
 			'id_plgn'=>$this->id_plgn,
+			'no_pelanggan'=>$this->no_pelanggan,
 			'nama_plgn'=>$this->nama_plgn,
 			'alamat_plgn'=>$this->alamat_plgn,
 			'cp_plgn'=>$this->cp_plgn,
@@ -47,6 +49,7 @@ class tpelanggan extends CI_Model{
 	function update($id_plgn)
 	{
 		$arrayData = array(
+			'no_pelanggan'=>$this->no_pelanggan,
 			'nama_plgn'=>$this->nama_plgn,
 			'alamat_plgn'=>$this->alamat_plgn,
 			'cp_plgn'=>$this->cp_plgn,
@@ -69,6 +72,17 @@ class tpelanggan extends CI_Model{
 		$this->db->where('id_plgn', $id_plgn);
 		$query = $this->db->get($this->pelanggan);	
 		return $query->result_array();
+	}
+	
+	function checkingPelanggan($no_pelanggan)
+	{
+		$this->db->where('no_pelanggan', $no_pelanggan);
+		$query = $this->db->get($this->pelanggan);	
+		if($query->num_rows() > 0){
+			return true;
+		} else {
+			return false;
+		}	
 	}
 	
 	function getListSearch($name){

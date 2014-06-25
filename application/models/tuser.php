@@ -45,8 +45,12 @@ class tuser extends CI_Model{
 	
 	function create()
 	{		
+		$this->db->order_by("id_user", "desc");
+		$query = $this->db->get($this->user);
+		$result = $query->result_array();
+	
 		$arrayData = array(
-			'id_user'=>$this->id_user,
+			'id_user'=>($result[0]['id_user']+1),
 			'username'=>$this->username,
 			'password'=>$this->password,
 			'level'=>$this->level,
@@ -135,6 +139,27 @@ class tuser extends CI_Model{
 			$data = array(
 				'username' => $row['username'],
 				'nik' => $row['nik'],
+				'last_login' => date('d-m-Y')
+			);
+			$this->session->set_userdata($data);
+			
+		    return true;
+		}
+	}
+	
+	function checkuserPelanggan($username,$password){
+		$this->db->where('username', $username);
+		$this->db->where('password', $password);
+		$this->db->where('status_user', "ON");
+		$this->db->where('level', "PL");
+		$query = $this->db->get($this->user);
+		
+		if($query->num_rows == 1){
+			$row = $query->row_array();
+			$this->update_last_login($row['id_user']);
+			
+			$data = array(
+				'usernamePelanggan' => $row['username'],
 				'last_login' => date('d-m-Y')
 			);
 			$this->session->set_userdata($data);
