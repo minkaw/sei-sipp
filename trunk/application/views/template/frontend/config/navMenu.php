@@ -2,13 +2,17 @@
 	<ul>
 		<li class="logo-wrapper"><img src="<?php echo base_url('assets/logo-sei.png') ?>" style=" height: 70px; "/></li>
 		<li class="active">
-			<a href="index.html">Home</a>
+			<a href="<?php echo base_url('home/dashboard') ?>">Home</a>
 		</li>
 		<li>
-			<a href="features.html">Features</a>
+			<a href="#">Our Product</a>
 		</li>
+		<li>
+			<a href="#">Our Client</a>
+		</li>
+		<?php if($this->session->userdata('usernamePelanggan')): ?>
 		<li class="has-submenu">
-			<a href="#">Pages +</a>
+			<a href="#">Control Panel +</a>
 			<div class="mainmenu-submenu">
 				<div class="mainmenu-submenu-inner"> 
 					<div>
@@ -17,67 +21,27 @@
 							<li><a href="index.html">Homepage (Sample 1)</a></li>
 							<li><a href="page-homepage-sample.html">Homepage (Sample 2)</a></li>
 						</ul>
-						<h4>Services & Pricing</h4>
+					</div>
+					<div>
+						<h4>Homepage</h4>
 						<ul>
-							<li><a href="page-services-1-column.html">Services/Features (Rows)</a></li>
-							<li><a href="page-services-3-columns.html">Services/Features (3 Columns)</a></li>
-							<li><a href="page-services-4-columns.html">Services/Features (4 Columns)</a></li>
-							<li><a href="page-pricing.html">Pricing Table</a></li>
-						</ul>
-						<h4>Team & Open Vacancies</h4>
-						<ul>
-							<li><a href="page-team.html">Our Team</a></li>
-							<li><a href="page-vacancies.html">Open Vacancies (List)</a></li>
-							<li><a href="page-job-details.html">Open Vacancies (Job Details)</a></li>
+							<li><a href="index.html">Homepage (Sample 1)</a></li>
+							<li><a href="page-homepage-sample.html">Homepage (Sample 2)</a></li>
 						</ul>
 					</div>
 					<div>
-						<h4>Our Work (Portfolio)</h4>
+						<h4>Homepage</h4>
 						<ul>
-							<li><a href="page-portfolio-2-columns-1.html">Portfolio (2 Columns, Option 1)</a></li>
-							<li><a href="page-portfolio-2-columns-2.html">Portfolio (2 Columns, Option 2)</a></li>
-							<li><a href="page-portfolio-3-columns-1.html">Portfolio (3 Columns, Option 1)</a></li>
-							<li><a href="page-portfolio-3-columns-2.html">Portfolio (3 Columns, Option 2)</a></li>
-							<li><a href="page-portfolio-item.html">Portfolio Item (Project) Description</a></li>
-						</ul>
-						<h4>General Pages</h4>
-						<ul>
-							<li><a href="page-about-us.html">About Us</a></li>
-							<li><a href="page-contact-us.html">Contact Us</a></li>
-							<li><a href="page-faq.html">Frequently Asked Questions</a></li>
-							<li><a href="page-testimonials-clients.html">Testimonials & Clients</a></li>
-							<li><a href="page-events.html">Events</a></li>
-							<li><a href="page-404.html">404 Page</a></li>
-							<li><a href="page-sitemap.html">Sitemap</a></li>
-							<li><a href="page-login.html">Login</a></li>
-							<li><a href="page-register.html">Register</a></li>
-							<li><a href="page-password-reset.html">Password Reset</a></li>
-							<li><a href="page-terms-privacy.html">Terms & Privacy</a></li>
-							<li><a href="page-coming-soon.html">Coming Soon</a></li>
-						</ul>
-					</div>
-					<div>
-						<h4>eShop</h4>
-						<ul>
-							<li><a href="page-products-3-columns.html">Products listing (3 Columns)</a></li>
-							<li><a href="page-products-4-columns.html">Products listing (4 Columns)</a></li>
-							<li><a href="page-products-slider.html">Products Slider</a></li>
-							<li><a href="page-product-details.html">Product Details</a></li>
-							<li><a href="page-shopping-cart.html">Shopping Cart</a></li>
-						</ul>
-						<h4>Blog</h4>
-						<ul>
-							<li><a href="page-blog-posts.html">Blog Posts (List)</a></li>
-							<li><a href="page-blog-post-right-sidebar.html">Blog Single Post (Right Sidebar)</a></li>
-							<li><a href="page-blog-post-left-sidebar.html">Blog Single Post (Left Sidebar)</a></li>
-							<li><a href="page-news.html">Latest & Featured News</a></li>
+							<li><a href="index.html">Homepage (Sample 1)</a></li>
+							<li><a href="page-homepage-sample.html">Homepage (Sample 2)</a></li>
 						</ul>
 					</div>
 				</div><!-- /mainmenu-submenu-inner -->
 			</div><!-- /mainmenu-submenu -->
 		</li>
+		<?php endif;?>
 		<li>
-			<a href="credits.html">Credits</a>
+			<a href="credits.html">About us</a>
 		</li>
 	</ul>
 </nav>

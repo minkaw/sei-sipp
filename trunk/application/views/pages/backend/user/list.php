@@ -41,7 +41,6 @@
                     <table class="table table-hover">
                         <tr>
                             <th>#</th>
-                            <th>ID Pengguna</th>
                             <th>Nama Pengguna</th>
 							<th>Level</th>
 							<th>Last Login</th>
@@ -52,7 +51,6 @@
 						<?php foreach($results as $row):?>
 							<tr>
 								<td><?php echo $i++?></td>
-								<td><?php echo $row['id_user'];?></td>
 								<td><?php echo $row['username'];?></td>
 								<td><?php echo $row['level'];?></td>
 								<td><?php echo $row['last_login'];?></td>

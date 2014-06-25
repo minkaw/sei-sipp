@@ -41,7 +41,7 @@
                     <table class="table table-hover">
                         <tr>
                             <th>#</th>
-                            <th>ID Pelanggan</th>
+                            <th>No. Pelanggan</th>
                             <th>Nama Pelanggan</th>
 							<th>Alamat Pelanggan</th>
 							<th>CP Pelanggan</th>
@@ -54,7 +54,7 @@
 						<?php foreach($results as $row):?>
 							<tr>
 								<td><?php echo $i++?></td>
-								<td><?php echo $row['id_plgn'];?></td>
+								<td><?php echo $row['no_pelanggan'];?></td>
 								<td><?php echo $row['nama_plgn'];?></td>
 								<td><?php echo $row['alamat_plgn'];?></td>
 								<td><?php echo $row['cp_plgn'];?></td>

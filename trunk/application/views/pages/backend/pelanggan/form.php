@@ -18,6 +18,20 @@
     <form class="form-horizontal" method="post" action="<?php echo base_url();?>admin/pelanggan/save" onsubmit="return pelanggan()"></br></br>
 		<input type="hidden" name="id_plgn" value="<?php echo @$detail[0]['id_plgn']?>"/>
 		<div class="form-group">
+			<label class="col-sm-2 control-label" >No Pelanggan</label>
+			<div class="col-sm-3">
+				<?php
+					$data ='';
+					if(@$detail[0]['no_pelanggan']){ 
+						$data = @$detail[0]['no_pelanggan'];
+					}else{ 
+						$data = 'PL'. date('dmY-His');
+					};
+				?>
+				<input class="form-control" type="text" id="no_pelanggan" name="no_pelanggan" value="<?php echo $data?>" disabled/>
+			</div>
+		</div>
+		<div class="form-group">
 			<label class="col-sm-2 control-label" >Nama Pelanggan</label>
 			<div class="col-sm-5">
 				<input class="form-control" type="text" id="np" name="nama_plgn" value="<?php echo @$detail[0]['nama_plgn']?>"/>
@@ -76,6 +90,7 @@
 			var nama_plgn = document.getElementById('np').value;
 			var alamat_plgn = document.getElementById('ap').value;
 			var cp_plgn = document.getElementById('cp').value;
+			var no_pelanggan = document.getElementById('no_pelanggan');
 			
 			if(nama_plgn == null || nama_plgn == ""){
 				alert ("Lengkapi Nama Pelanggan");
@@ -86,7 +101,8 @@
 			}else if(cp_plgn == null || cp_plgn == ""){
 				alert ("Lengkapi Contact Person");
 				return false;
-			}		
+			}
+			no_pelanggan.disabled = false;
 		}
 		</script>
 <?php $this->load->view('template/backend/layout_footer_backend'); ?>

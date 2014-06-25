@@ -66,6 +66,7 @@ class Pelanggan extends CI_Controller {
 	function save()
 	{
 		$id_plgn = $this->input->post('id_plgn');
+		$no_pelanggan = $this->input->post('no_pelanggan');
 		$nama_plgn = $this->input->post('nama_plgn');
 		$alamat_plgn = $this->input->post('alamat_plgn');
 		$cp_plgn = $this->input->post('cp_plgn');
@@ -76,7 +77,7 @@ class Pelanggan extends CI_Controller {
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{	
-			$this->tpelanggan->setData($id_plgn,$nama_plgn,$alamat_plgn,$cp_plgn,$nik,$status_plgn,$daftar_po);
+			$this->tpelanggan->setData($id_plgn,$no_pelanggan,$nama_plgn,$alamat_plgn,$cp_plgn,$nik,$status_plgn,$daftar_po);
 			if($nik){
 				if(!$id_plgn){
 				$this->tpelanggan->create();
