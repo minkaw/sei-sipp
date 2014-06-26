@@ -7,7 +7,7 @@ class tuser extends CI_Model{
 		parent::__construct();
 	}
 	
-	function setData($id_user,$username,$password,$level,$status_user,$last_login)
+	function setData($id_user,$username,$password,$level,$status_user,$last_login,$use_user)
 	{
 		$this->id_user= $id_user;
 		$this->username= $username;
@@ -15,6 +15,7 @@ class tuser extends CI_Model{
 		$this->level= $level;
 		$this->status_user= $status_user;
 		$this->last_login= $last_login;
+		$this->use_user= $use_user;
 	}
 	
 	function getList($page,$uri_segment){
@@ -32,8 +33,10 @@ class tuser extends CI_Model{
 	function getComboList(){
 		$this->db->where('level', "AM");
 		$this->db->where('status_user', "ON");
+		$this->db->where('use_user', "0");
 		$query = $this->db->get($this->user);
 		if($query->num_rows() > 0){
+			
 			foreach($query->result_array() as $row){
 				$result[] = $row;
 			}
@@ -55,7 +58,8 @@ class tuser extends CI_Model{
 			'password'=>$this->password,
 			'level'=>$this->level,
 			'status_user'=>$this->status_user,
-			'last_login'=>$this->last_login
+			'last_login'=>$this->last_login,
+			'use_user'=>$this->use_user
 		);
 		return $this->db->insert($this->user, $arrayData);
 	}
@@ -67,7 +71,8 @@ class tuser extends CI_Model{
 			'password'=>$this->password,
 			'level'=>$this->level,
 			'status_user'=>$this->status_user,
-			'last_login'=>$this->last_login
+			'last_login'=>$this->last_login,
+			'use_user'=>$this->use_user
 		);
 		$this->db->where('id_user', $id_user);
 		return $this->db->update($this->user, $arrayData);
@@ -172,6 +177,15 @@ class tuser extends CI_Model{
 	{
 		$arrayData = array(
 			'last_login'=>date('Y-m-d')
+		);
+		$this->db->where('id_user', $id_user);
+		return $this->db->update($this->user, $arrayData);
+	}
+	
+	function update_using_user($id_user)
+	{
+		$arrayData = array(
+			'use_user'=>1
 		);
 		$this->db->where('id_user', $id_user);
 		return $this->db->update($this->user, $arrayData);

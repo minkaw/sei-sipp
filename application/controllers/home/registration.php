@@ -22,6 +22,7 @@ class Registration extends CI_Controller {
 		$password = $this->input->post('password');
 		$level = $this->input->post('level');
 		$last_login = date('Y-m-d');
+		$use_user = 0;
 		
 		$submit = $this->input->post('submit');	
 		if($submit)
@@ -29,7 +30,7 @@ class Registration extends CI_Controller {
 			$query = $this->tpelanggan->checkingPelanggan($no_pelanggan);
 			if($query){
 				$status_user = "ON";
-				$this->tuser->setData($id_user,$username,$password,$level,$status_user,$last_login);
+				$this->tuser->setData($id_user,$username,$password,$level,$status_user,$last_login,$use_user);
 				$this->tuser->create();
 				
 				$this->session->set_flashdata('success', true);

@@ -55,6 +55,7 @@ class AccountManager extends CI_Controller {
 	function add(){
 		$data['mode'] = "taccountManagerbah";
 		$data['menu'] = $this->judulNama;
+		$data['comboUser'] = $this->tuser->getComboList();
 		$this->load->view('pages/backend/accountManager/form',$data);
 	}
 	
@@ -84,6 +85,7 @@ class AccountManager extends CI_Controller {
 			$this->taccountManager->setData($nik,$no_am,$nama_am,$alamat_am,$tlp_am,$email_am,$id_user,$status_am,$daftar_plgn);
 			if(!$no_am){
 				$this->taccountManager->create();
+				$this->tuser->update_using_user($id_user);
 			}else{
 				$this->taccountManager->update($no_am);
 			}
