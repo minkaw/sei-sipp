@@ -17,6 +17,11 @@
 </li>
 <li class="<?php echo $activeReg ?>">
 	<a href="#">
+		<i class="fa fa-envelope-o"></i> <span>Manajemen Surat</span>
+	</a>
+</li>
+<li class="<?php echo $activeReg ?>">
+	<a href="#">
 		<i class="fa fa-share-square-o"></i> <span>Pre Order</span>
 	</a>
 </li>
