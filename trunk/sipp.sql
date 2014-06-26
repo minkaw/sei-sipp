@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50508
 File Encoding         : 65001
 
-Date: 2014-06-25 14:47:43
+Date: 2014-06-26 21:58:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,12 +31,13 @@ CREATE TABLE `t_accountmanager` (
   `daftar_plgn` varchar(20) COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`no_am`),
   UNIQUE KEY `nik` (`nik`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- ----------------------------
 -- Records of t_accountmanager
 -- ----------------------------
 INSERT INTO `t_accountmanager` VALUES ('9392', '1', 'Anang Siswanto', 'Blora', '0353-511822', 'anang@siswanto', '1243', 'ON', '0');
+INSERT INTO `t_accountmanager` VALUES ('13123123', '2', 'test', 'test', '23231', '1313123', '1245', 'ON', '0');
 
 -- ----------------------------
 -- Table structure for `t_aktivitas`
@@ -70,13 +71,14 @@ CREATE TABLE `t_pelanggan` (
   `status_plgn` varchar(3) COLLATE latin1_general_ci NOT NULL,
   `daftar_po` varchar(10) COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`id_plgn`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- ----------------------------
 -- Records of t_pelanggan
 -- ----------------------------
 INSERT INTO `t_pelanggan` VALUES ('1', '', 'PT POS', 'Jl. Merdeka', 'Agung 022-122233', '0', 'ON', '');
 INSERT INTO `t_pelanggan` VALUES ('6', 'PL25062014-090414', 'tset', 'tset', 'test', '9392', 'ON', '');
+INSERT INTO `t_pelanggan` VALUES ('7', 'PL26062014-164006', 'tset', 'test', '3434', '13123123', 'ON', '');
 
 -- ----------------------------
 -- Table structure for `t_penjualan`
@@ -143,12 +145,16 @@ CREATE TABLE `t_user` (
   `level` varchar(20) COLLATE latin1_general_ci NOT NULL,
   `status_user` varchar(10) COLLATE latin1_general_ci NOT NULL,
   `last_login` date NOT NULL,
+  `use_user` int(2) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=MyISAM AUTO_INCREMENT=1245 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=1248 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('1234', 'Aulia Siska Narastiti', '1234a', 'A', 'ON', '2014-06-25');
-INSERT INTO `t_user` VALUES ('1243', 'test', 'test', 'AM', 'ON', '2014-06-25');
-INSERT INTO `t_user` VALUES ('1244', 'test', 'test', 'PL', 'ON', '2014-06-25');
+INSERT INTO `t_user` VALUES ('1234', 'Aulia Siska Narastiti', '1234a', 'A', 'ON', '2014-06-26', '0');
+INSERT INTO `t_user` VALUES ('1243', 'test', 'test', 'AM', 'ON', '2014-06-25', '1');
+INSERT INTO `t_user` VALUES ('1244', 'test', 'test', 'PL', 'ON', '2014-06-26', '0');
+INSERT INTO `t_user` VALUES ('1245', 'test22', 'test2', 'AM', 'ON', '2014-06-26', '0');
+INSERT INTO `t_user` VALUES ('1246', 'test3', 'test3', 'AM', 'ON', '2014-06-26', '0');
+INSERT INTO `t_user` VALUES ('1247', 'test', '1223', 'PL', 'ON', '2014-06-26', '0');
