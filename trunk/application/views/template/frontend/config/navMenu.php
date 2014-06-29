@@ -5,10 +5,10 @@
 			<a href="<?php echo base_url('home/dashboard') ?>">Home</a>
 		</li>
 		<li>
-			<a href="#">Our Product</a>
+			<a href="<?php echo base_url('home/product') ?>">Our Product</a>
 		</li>
 		<li>
-			<a href="#">Our Client</a>
+			<a href="<?php echo base_url('home/client') ?>">Our Client</a>
 		</li>
 		<?php if($this->session->userdata('usernamePelanggan')): ?>
 		<li class="has-submenu">
@@ -41,7 +41,7 @@
 		</li>
 		<?php endif;?>
 		<li>
-			<a href="credits.html">About us</a>
+			<a href="<?php echo base_url('home/aboutUs') ?>">About us</a>
 		</li>
 	</ul>
 </nav>

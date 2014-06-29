@@ -5,31 +5,31 @@
 			<!-- Slide 1 -->
 			<li class="bg4">
 				<!-- Slide Title -->
-				<h2 class="title">Responsive</h2>
+				<h2 class="title">Solar Tree</h2>
 				<!-- Slide Text -->
-				<h3 class="subtitle">It looks great on desktops, laptops, tablets and smartphones</h3>
+				<h3 class="subtitle">Solar tree merupakan konsep pembangkit listrik tenaga surya untuk perkotaan yang revolusioner dan merepresentasikan perpaduan sempurna antara teknik desain dan teknologi yang ramah lingkungan.</h3>
 				<!-- Slide Image -->
-				<img class="slide-img" src="<?php echo base_url('assets/frontend/img/homepage-slider/slide1.png') ?>" alt="Slide 1" />
+				<img class="slide-img" src="<?php echo base_url('assets/frontend/images/Solar-Tree-OK.jpg') ?>" alt="Slide 1" width="400px"/>
 			</li>
 			<!-- End Slide 1 -->
 			<!-- Slide 2 -->
 			<li class="bg3">
 				<!-- Slide Title -->
-				<h2 class="title">Color Schemes</h2>
+				<h2 class="title">Solar Home System</h2>
 				<!-- Slide Text -->
-				<h3 class="subtitle">Comes with 5 color schemes and it's easy to make your own!</h3>
+				<h3 class="subtitle">Solar Home System (SHS) merupakan sistem PLTS (Pembangkit Listrik Tenaga Surya) yang sangat sederhana. PLTS-SHS ini diperuntukan bagi penduduk di pedesaan yang belum mendapatkan jaringan listrik PLN.</h3>
 				<!-- Slide Image -->
-				<img class="slide-img" src="<?php echo base_url('assets/frontend/img/homepage-slider/slide2.png') ?>" alt="Slide 2" />
+				<img class="slide-img" src="<?php echo base_url('assets/frontend/images/Solar-Home-System.jpg') ?>" alt="Slide 2" width="350px"/>
 			</li>
 			<!-- End Slide 2 -->
 			<!-- Slide 3 -->
 			<li class="bg1">
 				<!-- Slide Title -->
-				<h2 class="title">Feature Rich</h2>
+				<h2 class="title">Solar Street Light</h2>
 				<!-- Slide Text -->
-				<h3 class="subtitle">Huge amount of components and over 30 sample pages!</h3>
+				<h3 class="subtitle">Solusi tepat untuk aplikasi Penerangan Jalan Umum (PJU) dengan fitur-fitur yang memungkinkan penggunaan energi yang lebih efisien.</h3>
 				<!-- Slide Image -->
-				<img class="slide-img" src="<?php echo base_url('assets/frontend/img/homepage-slider/slide3.png') ?>" alt="Slide 3" />
+				<img class="slide-img" src="<?php echo base_url('assets/frontend/images/Solar-Street-Light-OK.jpg') ?>" alt="Slide 3" width="250px"/>
 			</li>
 			<!-- End Slide 3 -->
 		</ul>
