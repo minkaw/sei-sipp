@@ -3,15 +3,7 @@
 	    	<div class="container">
 		    	<div class="row">
 		    		<div class="col-footer col-md-6 col-xs-6">
-		    			<h3>Navigate</h3>
-		    			<ul class="no-list-style footer-navigate-section">
-		    				<li><a href="page-blog-posts.html">Blog</a></li>
-		    				<li><a href="page-portfolio-3-columns-2.html">Portfolio</a></li>
-		    				<li><a href="page-products-3-columns.html">eShop</a></li>
-		    				<li><a href="page-services-3-columns.html">Services</a></li>
-		    				<li><a href="page-pricing.html">Pricing</a></li>
-		    				<li><a href="page-faq.html">FAQ</a></li>
-		    			</ul>
+		    			&nbsp;
 		    		</div>
 		    		
 		    		<div class="col-footer col-md-4 col-xs-6">
@@ -40,11 +32,10 @@
 		    </div>
 	    </div>
 
-        <!-- Javascripts -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+        <!-- Javascripts -->jquery-1.9.1
+        <script src="<?php echo base_url('assets/frontend/js/jquery-1.9.1.js') ?>"></script>
         <script src="<?php echo base_url('assets/frontend/js/bootstrap.min.js') ?>"></script>
-        <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+        <script src="<?php echo base_url('assets/frontend/js/leafletjs.js') ?>"></script>
         <script src="<?php echo base_url('assets/frontend/js/jquery.fitvids.js') ?>"></script>
         <script src="<?php echo base_url('assets/frontend/js/jquery.sequence-min.js') ?>"></script>
         <script src="<?php echo base_url('assets/frontend/js/jquery.bxslider.js') ?>"></script>
