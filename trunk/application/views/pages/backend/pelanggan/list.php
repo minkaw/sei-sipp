@@ -42,10 +42,10 @@
                         <tr>
                             <th>#</th>
                             <th>No. Pelanggan</th>
-                            <th>Nama Pelanggan</th>
-							<th>Alamat Pelanggan</th>
-							<th>CP Pelanggan</th>
-							<th>Status pelanggan</th>
+                            <th>Nama</th>
+							<th>Alamat</th>
+							<th>Contact Person</th>
+							<th>Status</th>
 							<th>Daftar PO</th>
                             <th style="text-align:center">Aksi</th>
                         </tr>
