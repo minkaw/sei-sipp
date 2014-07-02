@@ -16,22 +16,22 @@
 	</a>
 </li>
 <li class="<?php echo $activeReg ?>">
-	<a href="#">
+	<a href="<?php echo base_url('admin/manajemenSurat') ?>">
 		<i class="fa fa-envelope-o"></i> <span>Manajemen Surat</span>
 	</a>
 </li>
 <li class="<?php echo $activeReg ?>">
-	<a href="#">
+	<a href="<?php echo base_url('admin/preOrder') ?>">
 		<i class="fa fa-share-square-o"></i> <span>Pre Order</span>
 	</a>
 </li>
 <li class="<?php echo $activeReg ?>">
-	<a href="#">
+	<a href="<?php echo base_url('admin/penjualan') ?>">
 		<i class="fa fa-shopping-cart"></i> <span>Penjualan</span>
 	</a>
 </li>
 <li class="<?php echo $activeReg ?>">
-	<a href="#">
+	<a href="<?php echo base_url('admin/aktivitas') ?>">
 		<i class="fa fa-gears"></i> <span>Aktivitas</span>
 	</a>
 </li>
