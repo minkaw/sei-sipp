@@ -1,21 +1,21 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class aktivitas extends CI_Controller {
+class manajemenSurat extends CI_Controller {
 	var $judulNama = "Manajemen";
 	
 	function __construct() {
 		parent::__construct();
 		
-		$this->load->model('taktivitas');
+		$this->load->model('tmanajemenSurat');
 		$username = $this->session->userdata('username');
 		if (!$username)
 		  redirect("admin/login");
 	}
 
 	function index() {
-		$config['base_url'] = base_url().'admin/aktivitas/index/';
+		$config['base_url'] = base_url().'admin/manajemenSurat/index/';
 
-		$config['total_rows'] = $this->db->count_all('t_aktivitas');
+		$config['total_rows'] = $this->db->count_all('t_manajemenSurat');
 		$config['per_page'] = 15;
 		$config['uri_segment'] = 3;
 
@@ -46,21 +46,21 @@ class aktivitas extends CI_Controller {
 		$this->pagination->initialize($config);
 	
 		$data['menu'] = $this->judulNama;
-		$data['results'] = $this->taktivitas->getList($config['per_page'],$this->uri->segment(3));
-		$this->load->view('pages/backend/aktivitas/list',$data);
+		$data['results'] = $this->tmanajemenSurat->getList($config['per_page'],$this->uri->segment(3));
+		$this->load->view('pages/backend/manajemenSurat/list',$data);
 	}
 	
 	function add(){
 		$data['mode'] = "Tambah";
 		$data['menu'] = $this->judulNama;
-		$this->load->view('pages/backend/aktivitas/form',$data);
+		$this->load->view('pages/backend/manajemenSurat/form',$data);
 	}
 	
 	function edit($id_ak){
 		$data['mode'] = "Ubah";
 		$data['menu'] = $this->judulNama;
-		$data['detail'] = $this->taktivitas->detail($id_ak);
-		$this->load->view('pages/backend/aktivitas/form',$data);
+		$data['detail'] = $this->tmanajemenSurat->detail($id_ak);
+		$this->load->view('pages/backend/manajemenSurat/form',$data);
 	}
 	
 	function save()
@@ -76,36 +76,36 @@ class aktivitas extends CI_Controller {
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{	
-			$this->taktivitas->setData($id_ak,$no_ak,$pekerjaan,$anggaran,$progress,$aksi,$status_ak,$daftar_po);
+			$this->tmanajemenSurat->setData($id_ak,$no_ak,$pekerjaan,$anggaran,$progress,$aksi,$status_ak,$daftar_po);
 			if($aksi){
 				if(!$id_ak){
-				$this->taktivitas->create();
+				$this->tmanajemenSurat->create();
 				}else{
-					$this->taktivitas->update($id_ak);
+					$this->tmanajemenSurat->update($id_ak);
 				}
 				$this->session->set_flashdata('success', true);
-				redirect('admin/aktivitas');
+				redirect('admin/manajemenSurat');
 			}
 		}
 		$this->session->set_flashdata('error', true);
-		redirect('admin/aktivitas');
+		redirect('admin/manajemenSurat');
 	}
 	
 	function delete($id_ak)
 	{
-		if ($this->taktivitas->remove($id_ak)){
+		if ($this->tmanajemenSurat->remove($id_ak)){
 			$this->session->set_flashdata('delete', true);
-			redirect('admin/aktivitas','refresh');
+			redirect('admin/manajemenSurat','refresh');
 		}
 		$this->session->set_flashdata('error', true);
-		redirect('admin/aktivitas');
+		redirect('admin/manajemenSurat');
 	}	
 	
 	function searchData(){
 		$name = $this->input->post('name');
 		$data['menu'] = $this->judulNama;
-		$data['results'] = $this->taktivitas->getListSearch($name);
-		$this->load->view('pages/backend/aktivitas/list',$data);
+		$data['results'] = $this->tmanajemenSurat->getListSearch($name);
+		$this->load->view('pages/backend/manajemenSurat/list',$data);
 	}
 }
 
