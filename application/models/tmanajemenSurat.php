@@ -7,15 +7,13 @@ class tmanajemenSurat extends CI_Model{
 		parent::__construct();
 	}
 	
-	function setData($id_surat,$no_ak,$pekerjaan,$anggaran,$progress,$aksi,$status_ak)
+	function setData($id_surat,$nama_file,$status_surat,$nama_am,$keterangan)
 	{
 		$this->id_surat= $id_surat;
-		$this->no_ak= $no_ak;
-		$this->pekerjaan= $pekerjaan;
-		$this->anggaran= $anggaran;
-		$this->progress= $progress;
-		$this->aksi= $aksi;
-		$this->status_ak= $status_ak;
+		$this->nama_file= $nama_file;
+		$this->status_surat= $status_surat;
+		$this->nama_am= $nama_am;
+		$this->keterangan= $keterangan;
 	}
 	
 	function getList($page,$uri_segment){
@@ -34,12 +32,10 @@ class tmanajemenSurat extends CI_Model{
 	{		
 		$arrayData = array(
 			'id_surat'=>$this->id_surat,
-			'no_ak'=>$this->no_ak,
-			'pekerjaan'=>$this->pekerjaan,
-			'anggaran'=>$this->anggaran,
-			'progress'=>$this->progress,
-			'aksi'=>$this->aksi,
-			'status_ak'=>$this->status_ak
+			'nama_file'=>$this->nama_file,
+			'status_surat'=>$this->status_surat,
+			'nama_am'=>$this->nama_am,
+			'keterangan'=>$this->keterangan,
 		);
 		return $this->db->insert($this->manajemenSurat, $arrayData);
 	}
@@ -47,12 +43,10 @@ class tmanajemenSurat extends CI_Model{
 	function update($id_surat)
 	{
 		$arrayData = array(
-			'no_ak'=>$this->no_ak,
-			'pekerjaan'=>$this->pekerjaan,
-			'anggaran'=>$this->anggaran,
-			'progress'=>$this->progress,
-			'aksi'=>$this->aksi,
-			'status_ak'=>$this->status_ak
+			'nama_file'=>$this->nama_file,
+			'status_surat'=>$this->status_surat,
+			'nama_am'=>$this->nama_am,
+			'keterangan'=>$this->keterangan,
 		);
 		$this->db->where('id_surat', $id_surat);
 		return $this->db->update($this->manajemenSurat, $arrayData);
@@ -71,9 +65,9 @@ class tmanajemenSurat extends CI_Model{
 		return $query->result_array();
 	}
 	
-	function checkingmanajemenSurat($no_ak)
+	function checkingmanajemenSurat($nama_file)
 	{
-		$this->db->where('no_ak', $no_ak);
+		$this->db->where('nama_file', $nama_file);
 		$query = $this->db->get($this->manajemenSurat);	
 		if($query->num_rows() > 0){
 			return true;
@@ -83,7 +77,7 @@ class tmanajemenSurat extends CI_Model{
 	}
 	
 	function getListSearch($name){
-		$this->db->like('pekerjaan',$name);
+		$this->db->like('nama_file',$name);
 		$query = $this->db->get($this->manajemenSurat);
 		if($query->num_rows() > 0){
 			foreach($query->result_array() as $row){
