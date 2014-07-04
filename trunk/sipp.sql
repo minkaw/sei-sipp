@@ -1,25 +1,32 @@
-/*
-Navicat MySQL Data Transfer
+-- phpMyAdmin SQL Dump
+-- version 4.1.12
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 04, 2014 at 11:30 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
-Source Server         : basdat
-Source Server Version : 50508
-Source Host           : localhost:3306
-Source Database       : sipp
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
-Target Server Type    : MYSQL
-Target Server Version : 50508
-File Encoding         : 65001
 
-Date: 2014-06-26 21:58:58
-*/
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
-SET FOREIGN_KEY_CHECKS=0;
+--
+-- Database: `sipp`
+--
 
--- ----------------------------
--- Table structure for `t_accountmanager`
--- ----------------------------
-DROP TABLE IF EXISTS `t_accountmanager`;
-CREATE TABLE `t_accountmanager` (
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_accountmanager`
+--
+
+CREATE TABLE IF NOT EXISTS `t_accountmanager` (
   `nik` int(11) NOT NULL,
   `no_am` int(5) NOT NULL AUTO_INCREMENT,
   `nama_am` varchar(30) COLLATE latin1_general_ci NOT NULL,
@@ -31,37 +38,55 @@ CREATE TABLE `t_accountmanager` (
   `daftar_plgn` varchar(20) COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`no_am`),
   UNIQUE KEY `nik` (`nik`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;
 
--- ----------------------------
--- Records of t_accountmanager
--- ----------------------------
-INSERT INTO `t_accountmanager` VALUES ('9392', '1', 'Anang Siswanto', 'Blora', '0353-511822', 'anang@siswanto', '1243', 'ON', '0');
-INSERT INTO `t_accountmanager` VALUES ('13123123', '2', 'test', 'test', '23231', '1313123', '1245', 'ON', '0');
+--
+-- Dumping data for table `t_accountmanager`
+--
 
--- ----------------------------
--- Table structure for `t_aktivitas`
--- ----------------------------
-DROP TABLE IF EXISTS `t_aktivitas`;
-CREATE TABLE `t_aktivitas` (
-  `no_ak` int(5) NOT NULL,
+INSERT INTO `t_accountmanager` (`nik`, `no_am`, `nama_am`, `alamat_am`, `tlp_am`, `email_am`, `id_user`, `status_am`, `daftar_plgn`) VALUES
+(9392, 1, 'Anang Siswanto', 'Blora', '0353-511822', 'anang@siswanto', 1243, 'ON', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_aktivitas`
+--
+
+CREATE TABLE IF NOT EXISTS `t_aktivitas` (
+  `no_ak` int(5) NOT NULL AUTO_INCREMENT,
   `tgl_ak` date NOT NULL,
   `pekerjaan` longtext COLLATE latin1_general_ci NOT NULL,
   `anggaran` int(11) NOT NULL,
-  `progress` int(11) NOT NULL,
+  `progress` longtext COLLATE latin1_general_ci NOT NULL,
   `aksi` longtext COLLATE latin1_general_ci NOT NULL,
-  `status_ak` enum('active','non_active') COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+  `status_ak` enum('ON','OFF') COLLATE latin1_general_ci NOT NULL,
+  `id_ak` int(11) NOT NULL,
+  PRIMARY KEY (`no_ak`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
 
--- ----------------------------
--- Records of t_aktivitas
--- ----------------------------
+-- --------------------------------------------------------
 
--- ----------------------------
--- Table structure for `t_pelanggan`
--- ----------------------------
-DROP TABLE IF EXISTS `t_pelanggan`;
-CREATE TABLE `t_pelanggan` (
+--
+-- Table structure for table `t_manajemensurat`
+--
+
+CREATE TABLE IF NOT EXISTS `t_manajemensurat` (
+  `id_surat` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_file` varchar(30) NOT NULL,
+  `status_surat` varchar(10) NOT NULL,
+  `nama_am` varchar(30) NOT NULL,
+  `keterangan` text NOT NULL,
+  PRIMARY KEY (`id_surat`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_pelanggan`
+--
+
+CREATE TABLE IF NOT EXISTS `t_pelanggan` (
   `id_plgn` int(11) NOT NULL AUTO_INCREMENT,
   `no_pelanggan` varchar(20) COLLATE latin1_general_ci NOT NULL,
   `nama_plgn` varchar(50) COLLATE latin1_general_ci NOT NULL,
@@ -71,54 +96,56 @@ CREATE TABLE `t_pelanggan` (
   `status_plgn` varchar(3) COLLATE latin1_general_ci NOT NULL,
   `daftar_po` varchar(10) COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`id_plgn`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=7 ;
 
--- ----------------------------
--- Records of t_pelanggan
--- ----------------------------
-INSERT INTO `t_pelanggan` VALUES ('1', '', 'PT POS', 'Jl. Merdeka', 'Agung 022-122233', '0', 'ON', '');
-INSERT INTO `t_pelanggan` VALUES ('6', 'PL25062014-090414', 'tset', 'tset', 'test', '9392', 'ON', '');
-INSERT INTO `t_pelanggan` VALUES ('7', 'PL26062014-164006', 'tset', 'test', '3434', '13123123', 'ON', '');
+--
+-- Dumping data for table `t_pelanggan`
+--
 
--- ----------------------------
--- Table structure for `t_penjualan`
--- ----------------------------
-DROP TABLE IF EXISTS `t_penjualan`;
-CREATE TABLE `t_penjualan` (
+INSERT INTO `t_pelanggan` (`id_plgn`, `no_pelanggan`, `nama_plgn`, `alamat_plgn`, `cp_plgn`, `nik`, `status_plgn`, `daftar_po`) VALUES
+(6, 'PL25062014-090414', 'tset', 'tset', 'test', 9392, 'ON', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_penjualan`
+--
+
+CREATE TABLE IF NOT EXISTS `t_penjualan` (
+  `id_penj` int(11) NOT NULL AUTO_INCREMENT,
   `no_penj` int(11) NOT NULL,
   `tgl_penj` date NOT NULL,
   `jml_penj` int(11) NOT NULL,
   `totHrg_penj` int(11) NOT NULL,
-  `keuntungan` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+  `keuntungan` int(11) NOT NULL,
+  PRIMARY KEY (`id_penj`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
 
--- ----------------------------
--- Records of t_penjualan
--- ----------------------------
+-- --------------------------------------------------------
 
--- ----------------------------
--- Table structure for `t_preorder`
--- ----------------------------
-DROP TABLE IF EXISTS `t_preorder`;
-CREATE TABLE `t_preorder` (
+--
+-- Table structure for table `t_preorder`
+--
+
+CREATE TABLE IF NOT EXISTS `t_preorder` (
+  `id_po` int(11) NOT NULL AUTO_INCREMENT,
   `no_po` int(11) NOT NULL,
   `tgl_po` date NOT NULL,
   `jml_po` int(11) NOT NULL,
   `totHrg_po` int(11) NOT NULL,
   `deadline` date NOT NULL,
-  `status_po` enum('process','overtime','finish') COLLATE latin1_general_ci NOT NULL,
-  `daftar_prod` varchar(20) COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+  `status_po` varchar(8) COLLATE latin1_general_ci NOT NULL,
+  `daftar_prod` varchar(20) COLLATE latin1_general_ci NOT NULL,
+  PRIMARY KEY (`id_po`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
 
--- ----------------------------
--- Records of t_preorder
--- ----------------------------
+-- --------------------------------------------------------
 
--- ----------------------------
--- Table structure for `t_produk`
--- ----------------------------
-DROP TABLE IF EXISTS `t_produk`;
-CREATE TABLE `t_produk` (
+--
+-- Table structure for table `t_produk`
+--
+
+CREATE TABLE IF NOT EXISTS `t_produk` (
   `id_prod` int(11) NOT NULL AUTO_INCREMENT,
   `no_prod` varchar(5) COLLATE latin1_general_ci NOT NULL,
   `nama_prod` varchar(20) COLLATE latin1_general_ci NOT NULL,
@@ -126,35 +153,40 @@ CREATE TABLE `t_produk` (
   `kapasitas` int(11) NOT NULL,
   PRIMARY KEY (`id_prod`),
   UNIQUE KEY `no_prod` (`no_prod`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=9 ;
 
--- ----------------------------
--- Records of t_produk
--- ----------------------------
-INSERT INTO `t_produk` VALUES ('3', '1234', 'Solar Home System', '3000000', '3400');
-INSERT INTO `t_produk` VALUES ('8', '54253', 'Solar PV Hybrid', '20000000', '234');
+--
+-- Dumping data for table `t_produk`
+--
 
--- ----------------------------
--- Table structure for `t_user`
--- ----------------------------
-DROP TABLE IF EXISTS `t_user`;
-CREATE TABLE `t_user` (
+INSERT INTO `t_produk` (`id_prod`, `no_prod`, `nama_prod`, `hrg_prod`, `kapasitas`) VALUES
+(8, '54253', 'Solar PV Hybrid', 20000000, 234);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_user`
+--
+
+CREATE TABLE IF NOT EXISTS `t_user` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(30) COLLATE latin1_general_ci NOT NULL,
   `password` varchar(20) COLLATE latin1_general_ci NOT NULL,
   `level` varchar(20) COLLATE latin1_general_ci NOT NULL,
   `status_user` varchar(10) COLLATE latin1_general_ci NOT NULL,
   `last_login` date NOT NULL,
-  `use_user` int(2) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=MyISAM AUTO_INCREMENT=1248 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1245 ;
 
--- ----------------------------
--- Records of t_user
--- ----------------------------
-INSERT INTO `t_user` VALUES ('1234', 'Aulia Siska Narastiti', '1234a', 'A', 'ON', '2014-06-26', '0');
-INSERT INTO `t_user` VALUES ('1243', 'test', 'test', 'AM', 'ON', '2014-06-25', '1');
-INSERT INTO `t_user` VALUES ('1244', 'test', 'test', 'PL', 'ON', '2014-06-26', '0');
-INSERT INTO `t_user` VALUES ('1245', 'test22', 'test2', 'AM', 'ON', '2014-06-26', '0');
-INSERT INTO `t_user` VALUES ('1246', 'test3', 'test3', 'AM', 'ON', '2014-06-26', '0');
-INSERT INTO `t_user` VALUES ('1247', 'test', '1223', 'PL', 'ON', '2014-06-26', '0');
+--
+-- Dumping data for table `t_user`
+--
+
+INSERT INTO `t_user` (`id_user`, `username`, `password`, `level`, `status_user`, `last_login`) VALUES
+(1234, 'Aulia Siska Narastiti', '1234a', 'A', 'ON', '2014-07-02'),
+(1243, 'test', 'test', 'AM', 'ON', '2014-07-04'),
+(1244, 'test', 'test', 'PL', 'ON', '2014-06-30');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
