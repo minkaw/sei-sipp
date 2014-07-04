@@ -56,32 +56,30 @@ class manajemenSurat extends CI_Controller {
 		$this->load->view('pages/backend/manajemenSurat/form',$data);
 	}
 	
-	function edit($id_ak){
+	function edit($id_surat){
 		$data['mode'] = "Ubah";
 		$data['menu'] = $this->judulNama;
-		$data['detail'] = $this->tmanajemenSurat->detail($id_ak);
+		$data['detail'] = $this->tmanajemenSurat->detail($id_surat);
 		$this->load->view('pages/backend/manajemenSurat/form',$data);
 	}
 	
 	function save()
 	{
-		$id_ak = $this->input->post('id_ak');
-		$no_ak = $this->input->post('no_ak');
-		$pekerjaan = $this->input->post('pekerjaan');
-		$anggaran = $this->input->post('anggaran');
-		$progress = $this->input->post('progress');
-		$aksi = $this->session->userdata('aksi');
-		$status_ak = $this->input->post('status_ak');
+		$id_surat = $this->input->post('id_surat');
+		$nama_file = $this->input->post('nama_file');
+		$status_surat = $this->input->post('status_surat');
+		$nama_am = $this->input->post('nama_am');
+		$keterangan = $this->input->post('keterangan');
 		
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{	
-			$this->tmanajemenSurat->setData($id_ak,$no_ak,$pekerjaan,$anggaran,$progress,$aksi,$status_ak,$daftar_po);
+			$this->tmanajemenSurat->setData($id_surat,$nama_file,$status_surat,$nama_am,$keterangan);
 			if($aksi){
-				if(!$id_ak){
+				if(!$id_surat){
 				$this->tmanajemenSurat->create();
 				}else{
-					$this->tmanajemenSurat->update($id_ak);
+					$this->tmanajemenSurat->update($id_surat);
 				}
 				$this->session->set_flashdata('success', true);
 				redirect('admin/manajemenSurat');
@@ -91,9 +89,9 @@ class manajemenSurat extends CI_Controller {
 		redirect('admin/manajemenSurat');
 	}
 	
-	function delete($id_ak)
+	function delete($id_surat)
 	{
-		if ($this->tmanajemenSurat->remove($id_ak)){
+		if ($this->tmanajemenSurat->remove($id_surat)){
 			$this->session->set_flashdata('delete', true);
 			redirect('admin/manajemenSurat','refresh');
 		}
