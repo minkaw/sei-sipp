@@ -1,21 +1,21 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Pelanggan extends CI_Controller {
+class Penjualan extends CI_Controller {
 	var $judulNama = "Manajemen";
 	
 	function __construct() {
 		parent::__construct();
 		
-		$this->load->model('tpelanggan');
+		$this->load->model('tpenjualan');
 		$username = $this->session->userdata('username');
 		if (!$username)
 		  redirect("admin/login");
 	}
 
 	function index() {
-		$config['base_url'] = base_url().'admin/pelanggan/index/';
+		$config['base_url'] = base_url().'admin/penjualan/index/';
 
-		$config['total_rows'] = $this->db->count_all('t_pelanggan');
+		$config['total_rows'] = $this->db->count_all('t_penjualan');
 		$config['per_page'] = 15;
 		$config['uri_segment'] = 3;
 
@@ -46,67 +46,65 @@ class Pelanggan extends CI_Controller {
 		$this->pagination->initialize($config);
 	
 		$data['menu'] = $this->judulNama;
-		$data['results'] = $this->tpelanggan->getList($config['per_page'],$this->uri->segment(3));
-		$this->load->view('pages/backend/pelanggan/list',$data);
+		$data['results'] = $this->tpenjualan->getList($config['per_page'],$this->uri->segment(3));
+		$this->load->view('pages/backend/penjualan/list',$data);
 	}
 	
 	function add(){
 		$data['mode'] = "Tambah";
 		$data['menu'] = $this->judulNama;
-		$this->load->view('pages/backend/pelanggan/form',$data);
+		$this->load->view('pages/backend/penjualan/form',$data);
 	}
 	
-	function edit($id_plgn){
+	function edit($id_penj){
 		$data['mode'] = "Ubah";
 		$data['menu'] = $this->judulNama;
-		$data['detail'] = $this->tpelanggan->detail($id_plgn);
-		$this->load->view('pages/backend/pelanggan/form',$data);
+		$data['detail'] = $this->tpenjualan->detail($id_penj);
+		$this->load->view('pages/backend/penjualan/form',$data);
 	}
 	
 	function save()
 	{
-		$id_plgn = $this->input->post('id_plgn');
-		$no_pelanggan = $this->input->post('no_pelanggan');
-		$nama_plgn = $this->input->post('nama_plgn');
-		$alamat_plgn = $this->input->post('alamat_plgn');
-		$cp_plgn = $this->input->post('cp_plgn');
-		$nik = $this->session->userdata('nik');
-		$status_plgn = $this->input->post('status_plgn');
-		$daftar_po = $this->input->post('daftar_po');
+		$id_penj = $this->input->post('id_penj');
+		$no_penj = $this->input->post('no_penj');
+		$tgl_penj = date('Y-m-d');
+		$jml_penj = $this->input->post('jml_penj');
+		$totHrg_penj = $this->input->post('totHrg_penj');
+		$keuntungan = $this->input->post('keuntungan');
 		
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{	
-			$this->tpelanggan->setData($id_plgn,$no_pelanggan,$nama_plgn,$alamat_plgn,$cp_plgn,$nik,$status_plgn,$daftar_po);
-			if($nik){
-				if(!$id_plgn){
-				$this->tpelanggan->create();
+			$this->tpenjualan->setData($id_penj,$no_penj,$tgl_penj,$jml_penj,$totHrg_penj,$keuntungan);
+			if($id_penj){
+				if(!$id_penj){
+				$this->tpenjualan->create();
 				}else{
-					$this->tpelanggan->update($id_plgn);
+					$this->tpenjualan->update($id_penj);
 				}
 				$this->session->set_flashdata('success', true);
-				redirect('admin/pelanggan');
+				redirect('admin/penjualan');
 			}
 		}
 		$this->session->set_flashdata('error', true);
-		redirect('admin/pelanggan');
+		redirect('admin/penjualan');
 	}
 	
-	function delete($id_plgn)
+	function delete($id_penj)
 	{
-		if ($this->tpelanggan->remove($id_plgn)){
+		if ($this->tpenjualan->remove($id_penj)){
 			$this->session->set_flashdata('delete', true);
-			redirect('admin/pelanggan','refresh');
+			redirect('admin/penjualan','refresh');
 		}
 		$this->session->set_flashdata('error', true);
-		redirect('admin/pelanggan');
+		redirect('admin/penjualan');
 	}	
 	
 	function searchData(){
 		$name = $this->input->post('name');
 		$data['menu'] = $this->judulNama;
-		$data['results'] = $this->tpelanggan->getListSearch($name);
-		$this->load->view('pages/backend/pelanggan/list',$data);
+		$data['results'] = $this->tpenjualan->getListSearch($name);
+		$this->load->view('pages/backend/penjualan/list',$data);
 	}
 }
 
