@@ -25,10 +25,10 @@
 					if(@$detail[0]['no_penj']){ 
 						$data = @$detail[0]['no_penj'];
 					}else{ 
-						$data = 'Pnj'. date('dmY-His');
+						$data = 'PJ'. date('dmY-His');
 					};
 				?>
-				<input class="form-control" type="text" id="npj" name="no_penj" value="<?php echo $data?>" disabled/>
+				<input class="form-control" type="text" name="no_penj" value="<?php echo $data?>" disabled/>
 			</div>
 		</div>
 		<div class="form-group">
@@ -65,7 +65,6 @@
 </section><!-- /.content -->
 <script>
 		function penjualan(){
-			var no_penj = document.getElementById('npj');
 			var tgl_penj = document.getElementById('tpj').value;
 			var jml_penj = document.getElementById('jpj').value;
 			var totHrg_penj = document.getElementById('thpj').value;

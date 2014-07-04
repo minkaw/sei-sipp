@@ -3,12 +3,12 @@
 <section class="content-header">
     <h1>
         Manajemen Data
-        <small>User</small>
+        <small>Manajemen Surat</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="<?php echo base_url('admin/home') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Manajemen Data</li>
-        <li class="active">User</li>
+        <li class="active">Manajemen Surat</li>
     </ol>
 </section>
 
@@ -20,11 +20,11 @@
             <div class="box">
                 <div class="box-header">
                     <div class="box-title">
-                        <h3>Daftar User</h3>
-						<a href="<?php echo base_url('admin/user/add') ?>" class="btn btn-primary">Tambah Data</a>
+                        <h3>Daftar Manajemen Surat</h3>
+						<a href="<?php echo base_url('admin/manajemenSurat/add') ?>" class="btn btn-primary">Tambah Data</a>
                     </div>
                     <div class="box-tools">
-						<form role="form" action="<?php echo site_url() ?>admin/user/searchData"  method="post">
+						<form role="form" action="<?php echo site_url() ?>admin/manajemenSurat/searchData"  method="post">
                         <div class="input-group">
 								<input type="text" name="name" class="form-control input-sm pull-right" style="width: 240px;" placeholder="Search"/>
 								<div class="input-group-btn">
@@ -41,25 +41,25 @@
                     <table class="table table-hover">
                         <tr>
                             <th>#</th>
-                            <th>Nama Pengguna</th>
-							<th>Level</th>
-							<th>Last Login</th>
-							<th>Status User</th>
+                            <th>Nama File</th>
+							<th>Status Surat</th>
+							<th>Account Manager</th>
+							<th>Keterangan</th>
                             <th style="text-align:center">Aksi</th>
                         </tr>
 						<?php $i=1;?>
 						<?php foreach($results as $row):?>
 							<tr>
 								<td><?php echo $i++?></td>
-								<td><?php echo $row['username'];?></td>
-								<td><?php echo $row['level'];?></td>
-								<td><?php echo $row['last_login'];?></td>
-								<td><?php echo $row['status_user'];?></td>
+								<td><?php echo $row['nama_file'];?></td>
+								<td><?php echo $row['status_surat'];?></td>
+								<td><?php echo $row['nama_am'];?></td>
+								<td><?php echo $row['keterangan'];?></td>
 								<td style="text-align:center">
-									<a href="<?php echo site_url()?>admin/user/edit/<?php echo $row['id_user']?>" title="Ubah Data">
+									<a href="<?php echo site_url()?>admin/manajemenSurat/edit/<?php echo $row['id_surat']?>" title="Ubah Data">
 										<i class="fa fa-edit"></i>
 									</a>
-									<a href="<?php echo site_url()?>admin/user/delete/<?php echo $row['id_user']?>" title="Hapus Data">
+									<a href="<?php echo site_url()?>admin/manajemenSurat/delete/<?php echo $row['id_surat']?>" title="Hapus Data">
 										<i class="fa fa-times"></i>
 									</a>
 								</td>

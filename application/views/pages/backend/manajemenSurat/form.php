@@ -19,7 +19,8 @@
 		<input type="hidden" name="id_surat" value="<?php echo @$detail[0]['id_surat']?>"/>
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Nama File</label>
-				<input class="form-control" type="text" id="" name="nama_file" value="<?php echo $data?>" disabled/>
+			<div class="col-sm-5">
+				<input class="form-control" type="text" name="nama_file" value="<?php echo @$detail[0]['nama_file']?>"/>
 			</div>
 		</div>
 		<div class="form-group">
@@ -45,15 +46,41 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 control-label" >Nama Account Manager</label>
-			<div class="col-sm-4">
-				<input class="form-control" type="text" id="" name="nama_am" value="<?php echo @$detail[0]['nama_am']?>"/>
+			<label class="col-sm-2 control-label">Account Manager</label>
+			<div class="col-sm-3">
+				<select class="form-control" name="nama_am">
+					<?php $selected1 =  '' ?>
+					<?php $selected2 =  '' ?>
+					<?php $selected3 =  '' ?>
+					<?php $selected4 =  '' ?>
+					
+					<?php if (@$detail[0]['nama_am'] == "AM"):?>
+						<?php $selected1 =  'selected="selected"' ?>
+					<?php elseif (@$detail[0]['nama_am'] == "AM") :?>
+						<?php $selected2 =  'selected="selected"' ?>
+					<?php elseif (@$detail[0]['nama_am'] == "AM") :?>
+						<?php $selected3 =  'selected="selected"' ?>
+					<?php elseif (@$detail[0]['nama_am'] == "AM") :?>
+						<?php $selected4 =  'selected="selected"' ?>
+					<?php else:?>
+						<?php $selected1 =  '' ?>
+						<?php $selected2 =  '' ?>
+						<?php $selected3 =  '' ?>
+						<?php $selected4 =  '' ?>
+					<?php endif;?>
+				
+					<option value="">-- Pilih salah satu --</option>
+					<option value="A"  <?php echo $selected1 ?>>Account Manager</option>
+					<option value="AM" <?php echo $selected2 ?>>Account Manager</option>
+					<option value="KD" <?php echo $selected3 ?>>Account Manager</option>
+					<option value="PL" <?php echo $selected4 ?>>Account Manager</option>
+				</select>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Keterangan</label>
-			<div class="col-sm-4">
-				<input class="form-control" type="text" id="" name="keterangan" value="<?php echo @$detail[0]['keterangan']?>"/>
+			<div class="col-sm-5">
+				<input class="form-control" type="text" id="kt" name="nama_file" value="<?php echo @$detail[0]['nama_file']?>"/>
 			</div>
 		</div>
 		<div class="form-group">
@@ -66,22 +93,16 @@
 </section><!-- /.content -->
 <script>
 		function manajemenSurat(){
-			var status_surat = document.getElementById('np').value;
-			var nama_am = document.getElementById('ap').value;
-			var keterangan = document.getElementById('cp').value;
-			var nama_file = document.getElementById('nama_file');
+			var nama_file = document.getElementById('nf').value;
+			var keterangan = document.getElementById('kt').value;
 			
-			if(status_surat == null || status_surat == ""){
-				alert ("Lengkapi Nama manajemenSurat");
-				return false;
-			}else if(nama_am == null || nama_am == ""){
-				alert ("Lengkapi Alamat manajemenSurat");
+			if(nama_file == null || nama_file == ""){
+				alert ("Lengkapi nama_file");
 				return false;
 			}else if(keterangan == null || keterangan == ""){
-				alert ("Lengkapi Contact Person");
+				alert ("Lengkapi keterangan");
 				return false;
-			}
-			nama_file.disabled = false;
+			}		
 		}
 		</script>
 <?php $this->load->view('template/backend/layout_footer_backend'); ?>
