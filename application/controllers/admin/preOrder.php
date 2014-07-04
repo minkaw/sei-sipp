@@ -56,30 +56,32 @@ class preOrder extends CI_Controller {
 		$this->load->view('pages/backend/preOrder/form',$data);
 	}
 	
-	function edit($id_preOrder){
+	function edit($id_po){
 		$data['mode'] = "Ubah";
 		$data['menu'] = $this->judulNama;
-		$data['detail'] = $this->tpreOrder->detail($id_preOrder);
+		$data['detail'] = $this->tpreOrder->detail($id_po);
 		$this->load->view('pages/backend/preOrder/form',$data);
 	}
 	
 	function save()
 	{
-		$id_preOrder = $this->input->post('id_preOrder');
-		$preOrdername = $this->input->post('preOrdername');
-		$password = $this->input->post('password');
-		$level = $this->input->post('level');
-		$status_preOrder = $this->input->post('status_preOrder');
-		$last_login = date('Y-m-d');
+		$id_po = $this->input->post('id_po');
+		$no_po = $this->input->post('no_po');
+		$tgl_po = date('Y-m-d');
+		$jml_po = $this->input->post('jml_po');
+		$totHrg_po = $this->input->post('totHrg_po');
+		$deadline = date('Y-m-d');
+		$status_po = $this->input->post('status_po');
+		$daftar_prod = $this->input->post('daftar_prod');
 		
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{
-			$this->tpreOrder->setData($id_preOrder,$preOrdername,$password,$level,$status_preOrder,$last_login);
-			if(!$id_preOrder){
+			$this->tpreOrder->setData($id_po,$no_po,$tgl_po,$jml_po,$totHrg_po,$deadline,$status_po,$daftar_prod);
+			if(!$id_po){
 				$this->tpreOrder->create();
 			}else{
-				$this->tpreOrder->update($id_preOrder);
+				$this->tpreOrder->update($id_po);
 			}
 			$this->session->set_flashdata('success', true);
 			redirect('admin/preOrder');
@@ -88,9 +90,9 @@ class preOrder extends CI_Controller {
 		redirect('admin/preOrder');
 	}
 	
-	function delete($id_preOrder)
+	function delete($id_po)
 	{
-		if ($this->tpreOrder->remove($id_preOrder)){
+		if ($this->tpreOrder->remove($id_po)){
 			$this->session->set_flashdata('delete', true);
 			redirect('admin/preOrder','refresh');
 		}
