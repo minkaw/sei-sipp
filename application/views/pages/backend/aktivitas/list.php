@@ -2,13 +2,11 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Manajemen Data
-        <small>Aktivitas</small>
+        Report Monitoring
     </h1>
     <ol class="breadcrumb">
         <li><a href="<?php echo base_url('admin/home') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Manajemen Data</li>
-        <li class="active">Aktivitas</li>
+        <li class="active">Report Monitoring</li>
     </ol>
 </section>
 
@@ -20,7 +18,7 @@
             <div class="box">
                 <div class="box-header">
                     <div class="box-title">
-                        <h3>Daftar aktivitas</h3>
+                        <h3>Daftar Report Monitoring</h3>
 						<a href="<?php echo base_url('admin/aktivitas/add') ?>" class="btn btn-primary">Tambah Data</a>
                     </div>
                     <div class="box-tools">
@@ -45,9 +43,8 @@
                             <th>Nama Pekerjaan</th>
 							<th>Jumlah Anggaran (Rp)</th>
 							<th>Progress</th>
-							<th>Aksi</th>
 							<th>Status Aktivitas</th>
-                            <th style="text-align:center">#</th>
+                            <th style="text-align:center">&nbsp;</th>
                         </tr>
 						<?php $i=1;?>
 						<?php if(@$results):?>
@@ -58,7 +55,6 @@
 								<td><?php echo $row['pekerjaan'];?></td>
 								<td><?php echo $row['anggaran'];?></td>
 								<td><?php echo $row['progress'];?></td>
-								<td><?php echo $row['aksi'];?></td>
 								<td><?php echo $row['status_ak'];?></td>
 								<td style="text-align:center">
 									<a href="<?php echo site_url()?>admin/aktivitas/edit/<?php echo $row['id_ak']?>" title="Ubah Data">
@@ -72,7 +68,7 @@
 						<?php endforeach?>
 						<?php else:?>
 						<tr>
-							<td colspan="6" style="text-align:center">Data Masih Kosong</td>
+							<td colspan="8" style="text-align:center">Data Masih Kosong</td>
 						</tr>
 						<?php endif;?>
                     </table>

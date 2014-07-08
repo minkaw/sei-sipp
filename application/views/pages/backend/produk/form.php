@@ -32,13 +32,13 @@
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Harga Produk (Rp)</label>
 			<div class="col-sm-4">
-				<input class="form-control" type="text" id="hp" name="hrg_prod" value="<?php echo @$detail[0]['hrg_prod']?>"/>
+				<input class="form-control" type="number" id="hp" name="hrg_prod" value="<?php echo @$detail[0]['hrg_prod']?>"/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Kapasitas (Wp)</label>
 			<div class="col-sm-4">
-				<input class="form-control" type="text" id="k" name="kapasitas" value="<?php echo @$detail[0]['kapasitas']?>"/>
+				<input class="form-control" type="number" id="k" name="kapasitas" value="<?php echo @$detail[0]['kapasitas']?>"/>
 			</div>
 		</div>
 		<div class="form-group">

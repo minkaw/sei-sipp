@@ -2,8 +2,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Manajemen Data
-        <small>Manajemen Surat</small>
+        Manajemen Surat
     </h1>
     <ol class="breadcrumb">
         <li><a href="<?php echo base_url('admin/home') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -52,7 +51,6 @@
 						<?php foreach($results as $row):?>
 							<tr>
 								<td><?php echo $i++?></td>
-								<td><?php echo $row['id_surat'];?></td>
 								<td><?php echo $row['nama_file'];?></td>
 								<td><?php echo $row['status_surat'];?></td>
 								<td><?php echo $row['nama_am'];?></td>

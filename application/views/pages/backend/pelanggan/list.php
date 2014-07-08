@@ -46,7 +46,7 @@
 							<th>Alamat</th>
 							<th>Contact Person</th>
 							<th>Status</th>
-							<th>Daftar PO</th>
+							<th style="text-align:center">Jumlah Pre Order</th>
                             <th style="text-align:center">Aksi</th>
                         </tr>
 						<?php $i=1;?>
@@ -59,7 +59,7 @@
 								<td><?php echo $row['alamat_plgn'];?></td>
 								<td><?php echo $row['cp_plgn'];?></td>
 								<td><?php echo $row['status_plgn'];?></td>
-								<td><?php echo $row['daftar_po'];?></td>
+								<td style="text-align:center"><span class="label label-success"><?php echo $row['jml_po'];?></span></td>
 								<td style="text-align:center">
 									<a href="<?php echo site_url()?>admin/pelanggan/edit/<?php echo $row['id_plgn']?>" title="Ubah Data">
 										<i class="fa fa-edit"></i>

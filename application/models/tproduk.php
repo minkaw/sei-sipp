@@ -16,6 +16,19 @@ class tproduk extends CI_Model{
 		$this->kapasitas= $kapasitas;
 	}
 	
+	function getComboList(){
+		$query = $this->db->get($this->produk);
+		if($query->num_rows() > 0){
+			
+			foreach($query->result_array() as $row){
+				$result[] = $row;
+			}
+			return $result;
+		} else {
+			return false;
+		}	
+	}
+	
 	function getList($page,$uri_segment){
 		$query = $this->db->get($this->produk, $page, $uri_segment);
 		if($query->num_rows() > 0){

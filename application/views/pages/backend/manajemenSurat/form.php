@@ -20,7 +20,13 @@
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Nama File</label>
 			<div class="col-sm-5">
-				<input class="form-control" type="text" name="nama_file" value="<?php echo @$detail[0]['nama_file']?>"/>
+				<div class="input-group">
+					<input class="form-control" type="text" name="nama_file" value="<?php echo @$detail[0]['nama_file']?>" disabled/>
+					<div class="input-group-btn">
+						<button type="button" class="btn">Lihat Dokumen</button>
+					</div><!-- /btn-group -->
+				</div>
+				
 			</div>
 		</div>
 		<div class="form-group">
@@ -48,39 +54,25 @@
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Account Manager</label>
 			<div class="col-sm-3">
-				<select class="form-control" name="nama_am">
-					<?php $selected1 =  '' ?>
-					<?php $selected2 =  '' ?>
-					<?php $selected3 =  '' ?>
-					<?php $selected4 =  '' ?>
-					
-					<?php if (@$detail[0]['nama_am'] == "AM"):?>
-						<?php $selected1 =  'selected="selected"' ?>
-					<?php elseif (@$detail[0]['nama_am'] == "AM") :?>
-						<?php $selected2 =  'selected="selected"' ?>
-					<?php elseif (@$detail[0]['nama_am'] == "AM") :?>
-						<?php $selected3 =  'selected="selected"' ?>
-					<?php elseif (@$detail[0]['nama_am'] == "AM") :?>
-						<?php $selected4 =  'selected="selected"' ?>
-					<?php else:?>
-						<?php $selected1 =  '' ?>
-						<?php $selected2 =  '' ?>
-						<?php $selected3 =  '' ?>
-						<?php $selected4 =  '' ?>
-					<?php endif;?>
-				
-					<option value="">-- Pilih salah satu --</option>
-					<option value="A"  <?php echo $selected1 ?>>Account Manager</option>
-					<option value="AM" <?php echo $selected2 ?>>Account Manager</option>
-					<option value="KD" <?php echo $selected3 ?>>Account Manager</option>
-					<option value="PL" <?php echo $selected4 ?>>Account Manager</option>
+				<select class="form-control" name="no_am">
+					<option value=""> -- </option>
+					<?php if (@$comboAM):?>
+						<?php foreach ($comboAM as $row):?>
+							<?php if ($row['no_am'] == @$detail[0]['no_am']):?>
+								<?php $selected =  'selected="selected"' ?>
+							<?php else :?>
+								<?php $selected =  '' ?>
+							<?php endif;?>
+							<option value="<?php echo $row['no_am'] ?>" <?php echo $selected ?> ><?php echo $row['nama_am'] ?></option>
+						<?php endforeach?>
+					<?php endif?>
 				</select>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Keterangan</label>
 			<div class="col-sm-5">
-				<input class="form-control" type="text" id="kt" name="nama_file" value="<?php echo @$detail[0]['nama_file']?>"/>
+				<textarea class="form-control" cols="100" rows="5" name="keterangan" id="kt" style="resize:none;"><?php echo @$detail[0]['keterangan']?></textarea>
 			</div>
 		</div>
 		<div class="form-group">

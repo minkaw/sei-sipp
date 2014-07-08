@@ -2,13 +2,11 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Manajemen Data
-        <small>Aktivitas</small>
+        Report Monitoring
     </h1>
     <ol class="breadcrumb">
         <li><a href="<?php echo base_url('admin/home') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Manajemen Data</li>
-        <li class="active">Aktivitas</li>
+        <li class="active">Report Monitoring</li>
         <li class="active">Form</li>
     </ol>
 </section>
@@ -25,7 +23,7 @@
 					if(@$detail[0]['no_ak']){ 
 						$data = @$detail[0]['no_ak'];
 					}else{ 
-						$data = 'AK'. date('dmY-His');
+						$data = 'AK'. date('dmY-'). @$noAktivitas;
 					};
 				?>
 				<input class="form-control" type="text" id="no_ak" name="no_ak" value="<?php echo $data?>" disabled/>
@@ -40,19 +38,19 @@
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Jumlah Anggaran (Rp)</label>
 			<div class="col-sm-4">
-				<input class="form-control" type="text" id="ap" name="anggaran" value="<?php echo @$detail[0]['anggaran']?>"/>
+				<input class="form-control" type="number" id="ap" name="anggaran" value="<?php echo @$detail[0]['anggaran']?>"/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Progress</label>
-			<div class="col-sm-4">
-				<input class="form-control" type="text" id="cp" name="progress" value="<?php echo @$detail[0]['progress']?>"/>
+			<div class="col-sm-6">
+				<textarea class="form-control" cols="100" rows="5" id="cp" name="progress" style="resize:none;"><?php echo @$detail[0]['progress']?></textarea>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Aksi</label>
-			<div class="col-sm-4">
-				<input class="form-control" type="text" id="cp" name="aksi" value="<?php echo @$detail[0]['aksi']?>"/>
+			<div class="col-sm-6">
+				<textarea class="form-control" cols="100" rows="5" name="aksi" style="resize:none;"><?php echo @$detail[0]['aksi']?></textarea>
 			</div>
 		</div>
 		<div class="form-group">

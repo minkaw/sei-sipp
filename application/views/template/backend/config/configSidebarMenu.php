@@ -1,12 +1,23 @@
 <?php 
 	$activeDasboard = '';
 	$activeManajemen = '';
-	$activeReg = '';
+	$activePenjualan = '';
+	$activeReportMonitoring = '';
+	$activePreOrder = '';
+	$activeSurat = '';
 
 	if($menu == 'Dashboard'){
 		$activeDasboard = 'active';
 	}else if($menu == 'Manajemen'){
 		$activeManajemen = 'active';
+	}else if($menu == 'Penjualan'){
+		$activePenjualan = 'active';
+	}else if($menu == 'ReportMonitoring'){
+		$activeReportMonitoring = 'active';
+	}else if($menu == 'PreOrder'){
+		$activePreOrder = 'active';
+	}else if($menu == 'Surat'){
+		$activeSurat = 'active';
 	}
 ?>
 
@@ -15,24 +26,24 @@
 		<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 	</a>
 </li>
-<li class="<?php echo $activeReg ?>">
+<li class="<?php echo $activeSurat ?>">
 	<a href="<?php echo base_url('admin/manajemenSurat') ?>">
 		<i class="fa fa-envelope-o"></i> <span>Manajemen Surat</span>
 	</a>
 </li>
-<li class="<?php echo $activeReg ?>">
+<li class="<?php echo $activePreOrder ?>">
 	<a href="<?php echo base_url('admin/preOrder') ?>">
 		<i class="fa fa-share-square-o"></i> <span>Pre Order</span>
 	</a>
 </li>
-<li class="<?php echo $activeReg ?>">
+<li class="<?php echo $activePenjualan ?>">
 	<a href="<?php echo base_url('admin/penjualan') ?>">
 		<i class="fa fa-shopping-cart"></i> <span>Penjualan</span>
 	</a>
 </li>
-<li class="<?php echo $activeReg ?>">
+<li class="<?php echo $activeReportMonitoring ?>">
 	<a href="<?php echo base_url('admin/aktivitas') ?>">
-		<i class="fa fa-gears"></i> <span>Aktivitas</span>
+		<i class="fa fa-gears"></i> <span>Report Monitoring</span>
 	</a>
 </li>
 <li class="treeview <?php echo $activeManajemen ?>">

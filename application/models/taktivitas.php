@@ -7,10 +7,11 @@ class taktivitas extends CI_Model{
 		parent::__construct();
 	}
 	
-	function setData($id_ak,$no_ak,$pekerjaan,$anggaran,$progress,$aksi,$status_ak)
+	function setData($id_ak,$no_ak,$tgl_ak,$pekerjaan,$anggaran,$progress,$aksi,$status_ak)
 	{
 		$this->id_ak= $id_ak;
 		$this->no_ak= $no_ak;
+		$this->tgl_ak= $tgl_ak;
 		$this->pekerjaan= $pekerjaan;
 		$this->anggaran= $anggaran;
 		$this->progress= $progress;
@@ -71,15 +72,17 @@ class taktivitas extends CI_Model{
 		return $query->result_array();
 	}
 	
-	function checkingaktivitas($no_ak)
-	{
-		$this->db->where('no_ak', $no_ak);
-		$query = $this->db->get($this->aktivitas);	
+	function getNoAktivitas(){
+		$this->db->order_by("id_ak", "desc");
+		$this->db->limit(1);
+		$query = $this->db->get($this->aktivitas);
 		if($query->num_rows() > 0){
-			return true;
+			$result = $query->result_array();
+			return $result[0]['id_ak']+1;
 		} else {
-			return false;
+			return 1;
 		}	
+		
 	}
 	
 	function getListSearch($name){

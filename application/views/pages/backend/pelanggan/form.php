@@ -25,7 +25,7 @@
 					if(@$detail[0]['no_pelanggan']){ 
 						$data = @$detail[0]['no_pelanggan'];
 					}else{ 
-						$data = 'PL'. date('dmY-His');
+						$data = 'PL'. date('dmY-'). @$noPelanggan;
 					};
 				?>
 				<input class="form-control" type="text" id="no_pelanggan" name="no_pelanggan" value="<?php echo $data?>" disabled/>
@@ -69,12 +69,6 @@
 					<option value="ON"  <?php echo $selected1 ?>>ON</option>
 					<option value="OFF" <?php echo $selected2 ?>>OFF</option>
 				</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label" >Daftar PO</label>
-			<div class="col-sm-4">
-				<input class="form-control" type="text" name="daftar_po" value="<?php echo @$detail[0]['daftar_po']?>"/>
 			</div>
 		</div>
 		<div class="form-group">

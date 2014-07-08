@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class aktivitas extends CI_Controller {
-	var $judulNama = "Manajemen";
+	var $judulNama = "ReportMonitoring";
 	
 	function __construct() {
 		parent::__construct();
@@ -53,6 +53,7 @@ class aktivitas extends CI_Controller {
 	function add(){
 		$data['mode'] = "Tambah";
 		$data['menu'] = $this->judulNama;
+		$data['noAktivitas'] = $this->taktivitas->getNoAktivitas();
 		$this->load->view('pages/backend/aktivitas/form',$data);
 	}
 	
@@ -67,25 +68,24 @@ class aktivitas extends CI_Controller {
 	{
 		$id_ak = $this->input->post('id_ak');
 		$no_ak = $this->input->post('no_ak');
+		$tgl_ak = date('Y-m-d');
 		$pekerjaan = $this->input->post('pekerjaan');
 		$anggaran = $this->input->post('anggaran');
 		$progress = $this->input->post('progress');
-		$aksi = $this->session->userdata('aksi');
+		$aksi = $this->input->post('aksi');
 		$status_ak = $this->input->post('status_ak');
 		
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{	
-			$this->taktivitas->setData($id_ak,$no_ak,$pekerjaan,$anggaran,$progress,$aksi,$status_ak,$daftar_po);
-			if($aksi){
-				if(!$id_ak){
+			$this->taktivitas->setData($id_ak,$no_ak,$tgl_ak,$pekerjaan,$anggaran,$progress,$aksi,$status_ak);
+			if(!$id_ak){
 				$this->taktivitas->create();
-				}else{
-					$this->taktivitas->update($id_ak);
-				}
-				$this->session->set_flashdata('success', true);
-				redirect('admin/aktivitas');
+			}else{
+				$this->taktivitas->update($id_ak);
 			}
+			$this->session->set_flashdata('success', true);
+			redirect('admin/aktivitas');
 		}
 		$this->session->set_flashdata('error', true);
 		redirect('admin/aktivitas');

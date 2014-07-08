@@ -1,12 +1,13 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class preOrder extends CI_Controller {
-	var $judulNama = "Manajemen";
+	var $judulNama = "PreOrder";
 	
 	function __construct() {
 		parent::__construct();
 		
 		$this->load->model('tpreOrder');
+		$this->load->model('tdetailPreOrder');
 		$username = $this->session->userdata('username');
 		if (!$username)
 		  redirect("admin/login");
@@ -53,6 +54,7 @@ class preOrder extends CI_Controller {
 	function add(){
 		$data['mode'] = "Tambah";
 		$data['menu'] = $this->judulNama;
+		$data['noPreOrder'] = $this->tpreOrder->getNoPreOrder();
 		$this->load->view('pages/backend/preOrder/form',$data);
 	}
 	
@@ -67,24 +69,29 @@ class preOrder extends CI_Controller {
 	{
 		$id_po = $this->input->post('id_po');
 		$no_po = $this->input->post('no_po');
-		$tgl_po = date('Y-m-d');
-		$jml_po = $this->input->post('jml_po');
-		$totHrg_po = $this->input->post('totHrg_po');
-		$deadline = date('Y-m-d');
+		$no_pelanggan = $this->input->post('no_pelanggan');
+		$tgl_po = $this->input->post('tgl_po');
+		$deadline = $this->input->post('deadline');
 		$status_po = $this->input->post('status_po');
-		$daftar_prod = $this->input->post('daftar_prod');
+		$persetujuan_po = $this->input->post('persetujuan_po');
 		
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{
-			$this->tpreOrder->setData($id_po,$no_po,$tgl_po,$jml_po,$totHrg_po,$deadline,$status_po,$daftar_prod);
-			if(!$id_po){
-				$this->tpreOrder->create();
+			if($this->tpreOrder->checkingNoPelanggan($no_pelanggan)){
+				$this->tpreOrder->setData($id_po,$no_po,$no_pelanggan,$tgl_po,$deadline,$status_po,$persetujuan_po);
+				if(!$id_po){
+					$this->tpreOrder->create();
+				}else{
+					$this->tpreOrder->update($id_po);
+				}
+				$this->session->set_flashdata('success', true);
+				redirect('admin/preOrder');
 			}else{
-				$this->tpreOrder->update($id_po);
+				$this->session->set_flashdata('failed', true);
+				$this->session->set_flashdata('flag', 'No. Pelanggan');
+				redirect('admin/preOrder');
 			}
-			$this->session->set_flashdata('success', true);
-			redirect('admin/preOrder');
 		}
 		$this->session->set_flashdata('error', true);
 		redirect('admin/preOrder');

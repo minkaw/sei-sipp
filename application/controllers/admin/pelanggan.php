@@ -53,6 +53,7 @@ class Pelanggan extends CI_Controller {
 	function add(){
 		$data['mode'] = "Tambah";
 		$data['menu'] = $this->judulNama;
+		$data['noPelanggan'] = $this->tpelanggan->getNoPelanggan();
 		$this->load->view('pages/backend/pelanggan/form',$data);
 	}
 	
@@ -72,21 +73,18 @@ class Pelanggan extends CI_Controller {
 		$cp_plgn = $this->input->post('cp_plgn');
 		$nik = $this->session->userdata('nik');
 		$status_plgn = $this->input->post('status_plgn');
-		$daftar_po = $this->input->post('daftar_po');
 		
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{	
-			$this->tpelanggan->setData($id_plgn,$no_pelanggan,$nama_plgn,$alamat_plgn,$cp_plgn,$nik,$status_plgn,$daftar_po);
-			if($nik){
-				if(!$id_plgn){
+			$this->tpelanggan->setData($id_plgn,$no_pelanggan,$nama_plgn,$alamat_plgn,$cp_plgn,$nik,$status_plgn);
+			if(!$id_plgn){
 				$this->tpelanggan->create();
-				}else{
-					$this->tpelanggan->update($id_plgn);
-				}
-				$this->session->set_flashdata('success', true);
-				redirect('admin/pelanggan');
+			}else{
+				$this->tpelanggan->update($id_plgn);
 			}
+			$this->session->set_flashdata('success', true);
+			redirect('admin/pelanggan');
 		}
 		$this->session->set_flashdata('error', true);
 		redirect('admin/pelanggan');

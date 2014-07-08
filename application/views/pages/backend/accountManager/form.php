@@ -35,16 +35,16 @@
 				<input class="form-control" type="text" id="aa" name="alamat_am" value="<?php echo @$detail[0]['alamat_am']?>"/>
 			</div>
 		</div>
-		<div clas<div class="form-group">
+		<div class="form-group">
 			<label class="col-sm-2 control-label" >Telepon</label>
 			<div class="col-sm-4">
 				<input class="form-control" type="text" id="ta" name="tlp_am" value="<?php echo @$detail[0]['tlp_am']?>"/>
 			</div>
 		</div>
-		<div clas<div class="form-group">
+		<div class="form-group">
 			<label class="col-sm-2 control-label" >Email</label>
 			<div class="col-sm-4">
-				<input class="form-control" type="text" id="ea" name="email_am" value="<?php echo @$detail[0]['email_am']?>"/>
+				<input class="form-control" type="email" id="ea" name="email_am" value="<?php echo @$detail[0]['email_am']?>"/>
 			</div>
 		</div>
 		<div class="form-group">
