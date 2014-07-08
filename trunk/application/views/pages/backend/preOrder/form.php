@@ -1,6 +1,6 @@
 <?php $this->load->view('template/backend/layout_header_backend'); ?>
-<!-- CONtent Header (Page header) -->
-<sectiON class="cONtent-header">
+<!-- content Header (Page header) -->
+<section class="content-header">
     <h1>
         Manajemen Data
         <small>Pre Order</small>
@@ -11,46 +11,48 @@
         <li class="active">Pre Order</li>
         <li class="active">Form</li>
     </ol>
-</sectiON>
+</section>
 
-<!-- Main cONtent -->
-<sectiON class="cONtent">
-    <form class="form-horizONtal" method="post" actiON="<?php echo base_url();?>admin/preOrder/save" ONsubmit="return preOrder()"></br></br>
+<!-- Main content -->
+<section class="content">
+    <form class="form-horizontal" method="post" actiON="<?php echo base_url();?>admin/preOrder/save" ONsubmit="return preOrder()"></br></br>
 		<input type="hidden" name="id_po" value="<?php echo @$detail[0]['id_po']?>"/>
 		<div class="form-group">
-			<label class="col-sm-2 cONtrol-label" >No PO</label>
-			<div class="col-sm-5">
-				<input class="form-cONtrol" type="text" id="npo" name="no_po" value="<?php echo @$detail[0]['no_po']?>"/>
+			<label class="col-sm-2 control-label" >No. Pre Order</label>
+			<div class="col-sm-3">
+				<?php
+					$data ='';
+					if(@$detail[0]['no_po']){ 
+						$data = @$detail[0]['no_po'];
+					}else{ 
+						$data = 'PO'. date('dmY-'). @$noPreOrder;
+					};
+				?>
+				<input class="form-control" type="text" id="npo" name="no_po" value="<?php echo $data; ?>" disabled/>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 cONtrol-label" >Tanggal</label>
-			<div class="col-sm-5">
-				<input class="form-cONtrol" type="text" id="tpo" name="tgl_po" value="<?php echo @$detail[0]['tgl_po']?>"/>
+			<label class="col-sm-2 control-label" >No. Pelanggan</label>
+			<div class="col-sm-3">
+				<input class="form-control" type="text" id="no_pelanggan" name="no_pelanggan" value="<?php echo @$detail[0]['no_pelanggan']?>"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 cONtrol-label" >Jumlah</label>
-			<div class="col-sm-5">
-				<input class="form-cONtrol" type="text" id="jp" name="jml_po" value="<?php echo @$detail[0]['jml_po']?>"/>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 cONtrol-label" >Total Harga</label>
-			<div class="col-sm-4">
-				<input class="form-cONtrol" type="text" id="thp" name="totHrg_po" value="<?php echo @$detail[0]['totHrg_po']?>"/>
+			<label class="col-sm-2 control-label" >Tgl Pre Order</label>
+			<div class="col-sm-3">
+				<input class="form-control" type="date" id="tpo" name="tgl_po" value="<?php echo @$detail[0]['tgl_po']?>"/>
 			</div>
 		</div>
 		<div clas<div class="form-group">
-			<label class="col-sm-2 cONtrol-label" >Deadline</label>
-			<div class="col-sm-4">
-				<input class="form-cONtrol" type="text" id="dl" name="deadline" value="<?php echo @$detail[0]['deadline']?>"/>
+			<label class="col-sm-2 control-label" >Deadline</label>
+			<div class="col-sm-3">
+				<input class="form-control" type="date" id="dl" name="deadline" value="<?php echo @$detail[0]['deadline']?>"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 cONtrol-label">Status PO</label>
+			<label class="col-sm-2 control-label">Status PO</label>
 			<div class="col-sm-3">
-				<select class="form-cONtrol" name="status_po">
+				<select class="form-control" id="status_po" name="status_po">
 					<?php $selected1 =  '' ?>
 					<?php $selected2 =  '' ?>
 					
@@ -80,31 +82,29 @@
 			</div>
 		</div>
     </form>
-</sectiON><!-- /.cONtent -->
+</section><!-- /.content -->
 <script>
-		functiON user(){
-			var no_po = document.getElementById('npo').value;
-			var tgl_po = document.getElementById('jpo').value;
-			var jml_po = document.getElementById('jp').value;
-			var totHrg_po = document.getElementById('thp').value;
+		function preOrder(){
+			var no_po = document.getElementById('npo');
+			var no_pelanggan = document.getElementById('no_pelanggan').value;
+			var tgl_po = document.getElementById('tpo').value;
 			var deadline = document.getElementById('dl').value;
+			var status_po = document.getElementById('status_po').value;
 			
-			if(no_po == null || no_po == ""){
-				alert ("Lengkapi Nomor Pre Order");
+			if(no_pelanggan == null || no_pelanggan == ""){
+				alert ("Lengkapi Nomor Pelanggan");
 				return false;
 			}else if(tgl_po == null || tgl_po == ""){
 				alert ("Lengkapi Tanggal Pre Order");
 				return false;
-			}else if(jml_po == null || jml_po == ""){
-				alert ("Lengkapi Jumlah Pre Order");
-				return false;
-			}else if(totHrg_po == null || totHrg_po == ""){
-				alert ("Lengkapi Total Harga Pre Order");
-				return false;
 			}else if(deadline == null || deadline == ""){
 				alert ("Lengkapi Deadline Pre Order");
 				return false;
+			}else if(status_po == null || status_po == ""){
+				alert ("Lengkapi Status Pre Order");
+				return false;
 			}		
+			npo.disabled = false;
 		}
 		</script>
 <?php $this->load->view('template/backend/layout_footer_backend'); ?>

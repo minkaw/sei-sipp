@@ -2,8 +2,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Manajemen Data
-        <small>Penjualan</small>
+        Penjualan
     </h1>
     <ol class="breadcrumb">
         <li><a href="<?php echo base_url('admin/home') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -21,7 +20,6 @@
                 <div class="box-header">
                     <div class="box-title">
                         <h3>Daftar Penjualan</h3>
-						<a href="<?php echo base_url('admin/penjualan/add') ?>" class="btn btn-primary">Tambah Data</a>
                     </div>
                     <div class="box-tools">
 						<form role="form" action="<?php echo site_url() ?>admin/penjualan/searchData"  method="post">
@@ -30,7 +28,6 @@
 								<div class="input-group-btn">
 									<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
 								</div>
-							
                         </div>
 						</form>
                     </div>
@@ -41,11 +38,11 @@
                     <table class="table table-hover">
                         <tr>
                             <th>#</th>
-                            <th>No. penjualan</th>
-                            <th>Tanggal</th>
-							<th>Jumlah</th>
-							<th>Total Harga</th>
-							<th>Keuntungan</th>
+							<th>No. Pre Order</th>
+							<th>Status Pre Order</th>
+                            <th>No. Penjualan</th>
+                            <th>Tgl. Penjualan</th>
+							<th>Status Penjualan</th>
                             <th style="text-align:center">Aksi</th>
                         </tr>
 						<?php $i=1;?>
@@ -53,16 +50,22 @@
 						<?php foreach($results as $row):?>
 							<tr>
 								<td><?php echo $i++?></td>
+								<td><?php echo $row['no_po'];?></td>
+								<td><?php echo $row['status_po'];?></td>
 								<td><?php echo $row['no_penj'];?></td>
 								<td><?php echo $row['tgl_penj'];?></td>
-								<td><?php echo $row['jml_penj'];?></td>
-								<td><?php echo $row['totHrg_penj'];?></td>
-								<td><?php echo $row['keuntungan'];?></td>
+								<td>
+									<?php if($row['status_penjualan'] == 1):?>
+										Telah Terjual
+									<?php else:?>
+										Belum Terjual
+									<?php endif;?>
+								</td>
 								<td style="text-align:center">
-									<a href="<?php echo site_url()?>admin/penjualan/edit/<?php echo $row['id_penj']?>" title="Ubah Data">
+									<a href="<?php echo site_url()?>admin/penjualan/edit/<?php echo $row['id_po']?>" title="Ubah Data">
 										<i class="fa fa-edit"></i>
 									</a>
-									<a href="<?php echo site_url()?>admin/penjualan/delete/<?php echo $row['id_penj']?>" title="Hapus Data">
+									<a href="<?php echo site_url()?>admin/penjualan/delete/<?php echo $row['id_po']?>" title="Hapus Data">
 										<i class="fa fa-times"></i>
 									</a>
 								</td>
@@ -70,7 +73,7 @@
 						<?php endforeach?>
 						<?php else:?>
 						<tr>
-							<td colspan="6" style="text-align:center">Data Masih Kosong</td>
+							<td colspan="7" style="text-align:center">Data Masih Kosong</td>
 						</tr>
 						<?php endif;?>
                     </table>

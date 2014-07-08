@@ -1,12 +1,13 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class manajemenSurat extends CI_Controller {
-	var $judulNama = "Manajemen";
+	var $judulNama = "Surat";
 	
 	function __construct() {
 		parent::__construct();
 		
 		$this->load->model('tmanajemenSurat');
+		$this->load->model('taccountManager');
 		$username = $this->session->userdata('username');
 		if (!$username)
 		  redirect("admin/login");
@@ -53,6 +54,7 @@ class manajemenSurat extends CI_Controller {
 	function add(){
 		$data['mode'] = "Tambah";
 		$data['menu'] = $this->judulNama;
+		$data['comboAM'] = $this->taccountManager->getComboList();
 		$this->load->view('pages/backend/manajemenSurat/form',$data);
 	}
 	
@@ -60,6 +62,7 @@ class manajemenSurat extends CI_Controller {
 		$data['mode'] = "Ubah";
 		$data['menu'] = $this->judulNama;
 		$data['detail'] = $this->tmanajemenSurat->detail($id_surat);
+		$data['comboAM'] = $this->taccountManager->getComboList();
 		$this->load->view('pages/backend/manajemenSurat/form',$data);
 	}
 	
@@ -68,22 +71,20 @@ class manajemenSurat extends CI_Controller {
 		$id_surat = $this->input->post('id_surat');
 		$nama_file = $this->input->post('nama_file');
 		$status_surat = $this->input->post('status_surat');
-		$nama_am = $this->input->post('nama_am');
+		$no_am = $this->input->post('no_am');
 		$keterangan = $this->input->post('keterangan');
 		
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{	
-			$this->tmanajemenSurat->setData($id_surat,$nama_file,$status_surat,$nama_am,$keterangan);
-			if($aksi){
-				if(!$id_surat){
+			$this->tmanajemenSurat->setData($id_surat,$nama_file,$status_surat,$no_am,$keterangan);
+			if(!$id_surat){
 				$this->tmanajemenSurat->create();
-				}else{
-					$this->tmanajemenSurat->update($id_surat);
-				}
-				$this->session->set_flashdata('success', true);
-				redirect('admin/manajemenSurat');
+			}else{
+				$this->tmanajemenSurat->update($id_surat);
 			}
+			$this->session->set_flashdata('success', true);
+			redirect('admin/manajemenSurat');
 		}
 		$this->session->set_flashdata('error', true);
 		redirect('admin/manajemenSurat');

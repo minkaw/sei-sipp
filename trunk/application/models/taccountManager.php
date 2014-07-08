@@ -7,7 +7,7 @@ class taccountManager extends CI_Model{
 		parent::__construct();
 	}
 	
-	function setData($nik,$no_am,$nama_am,$alamat_am,$tlp_am,$email_am,$id_user,$status_am,$daftar_plgn)
+	function setData($nik,$no_am,$nama_am,$alamat_am,$tlp_am,$email_am,$id_user,$status_am)
 	{
 		$this->nik= $nik;
 		$this->no_am= $no_am;
@@ -17,7 +17,6 @@ class taccountManager extends CI_Model{
 		$this->email_am= $email_am;
 		$this->id_user= $id_user;
 		$this->status_am= $status_am;
-		$this->daftar_plgn= $daftar_plgn;
 	}
 	
 	function getList($page,$uri_segment){
@@ -38,6 +37,20 @@ class taccountManager extends CI_Model{
 		}	
 	}
 	
+	function getComboList(){
+		$this->db->where('status_am', "ON");
+		$query = $this->db->get($this->accountManager);
+		if($query->num_rows() > 0){
+			
+			foreach($query->result_array() as $row){
+				$result[] = $row;
+			}
+			return $result;
+		} else {
+			return false;
+		}	
+	}
+	
 	function create()
 	{		
 		$arrayData = array(
@@ -48,8 +61,7 @@ class taccountManager extends CI_Model{
 			'tlp_am'=>$this->tlp_am,
 			'email_am'=>$this->email_am,
 			'id_user'=>$this->id_user,
-			'status_am'=>$this->status_am,
-			'daftar_plgn'=>$this->daftar_plgn
+			'status_am'=>$this->status_am
 		);
 		return $this->db->insert($this->accountManager, $arrayData);
 	}
@@ -64,8 +76,7 @@ class taccountManager extends CI_Model{
 			'tlp_am'=>$this->tlp_am,
 			'email_am'=>$this->email_am,
 			'id_user'=>$this->id_user,
-			'status_am'=>$this->status_am,
-			'daftar_plgn'=>$this->daftar_plgn
+			'status_am'=>$this->status_am
 		);
 		$this->db->where('no_am', $no_am);
 		return $this->db->update($this->accountManager, $arrayData);

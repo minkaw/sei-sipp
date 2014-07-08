@@ -24,3 +24,12 @@
 		<b>Alert!</b> Data Tidak Bisa Diproses
 	</div>
 <?php endif?>
+
+<?php $failed = $this->session->flashdata('failed');?>
+<?php if ($failed):?>
+	<div class="alert alert-warning alert-dismissable">
+		<i class="fa fa-warning"></i>
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<b>Warning!</b> Data <?php echo $this->session->flashdata('flag'); ?> Tidak Diketemukan
+	</div>
+<?php endif?>
