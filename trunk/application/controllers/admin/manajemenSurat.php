@@ -69,6 +69,7 @@ class manajemenSurat extends CI_Controller {
 	function save()
 	{
 		$id_surat = $this->input->post('id_surat');
+		$no_pelanggan = $this->input->post('no_pelanggan');
 		$nama_file = $this->input->post('nama_file');
 		$status_surat = $this->input->post('status_surat');
 		$no_am = $this->input->post('no_am');
@@ -77,7 +78,7 @@ class manajemenSurat extends CI_Controller {
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{	
-			$this->tmanajemenSurat->setData($id_surat,$nama_file,$status_surat,$no_am,$keterangan);
+			$this->tmanajemenSurat->setData($id_surat,$no_pelanggan,$nama_file,$status_surat,$no_am,$keterangan);
 			if(!$id_surat){
 				$this->tmanajemenSurat->create();
 			}else{
@@ -92,6 +93,9 @@ class manajemenSurat extends CI_Controller {
 	
 	function delete($id_surat)
 	{
+		$getHapus = $this->tmanajemenSurat->detail($id_surat);
+		@unlink("upload/dokumen/".$getHapus[0]['nama_file']);
+		
 		if ($this->tmanajemenSurat->remove($id_surat)){
 			$this->session->set_flashdata('delete', true);
 			redirect('admin/manajemenSurat','refresh');

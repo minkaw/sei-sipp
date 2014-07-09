@@ -17,6 +17,7 @@
 <section class="content">
     <form class="form-horizontal" method="post" action="<?php echo base_url();?>admin/user/save" onsubmit="return user()"></br></br>
 		<input type="hidden" name="id_user" value="<?php echo @$detail[0]['id_user']?>"/>
+		<input type="hidden" name="no_pelanggan" value="<?php echo @$detail[0]['no_pelanggan']?>"/>
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Username</label>
 			<div class="col-sm-5">

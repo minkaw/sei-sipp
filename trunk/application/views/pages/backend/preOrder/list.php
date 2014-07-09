@@ -69,7 +69,7 @@
 									<a href="<?php echo base_url('admin/detailPreOrder/dtlPreOrder/'. $row['id_po']) ?>" class="btn btn-sm btn-info" data-toggle="modal" data-target="#myModal" data-backdrop="static" 
    data-keyboard="false"><i class="fa fa-shopping-cart"></i></a>
 									
-									<?php if($row['status_po'] != 'Finish'):?>
+									<?php if($row['persetujuan_po'] == 0):?>
 										<a href="<?php echo base_url('admin/detailPreOrder/formDtlPreOrder/'. $row['id_po']) ?>" class="btn btn-sm btn-success" >
 											<i class="fa fa-plus-square"></i>
 										</a>
@@ -87,7 +87,7 @@
 						<?php endforeach?>
 						<?php else:?>
 						<tr>
-							<td colspan="8" style="text-align:center">Data Masih Kosong</td>
+							<td colspan="9" style="text-align:center">Data Masih Kosong</td>
 						</tr>
 						<?php endif;?>
                     </table>

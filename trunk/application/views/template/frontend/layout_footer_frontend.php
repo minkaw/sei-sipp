@@ -32,7 +32,7 @@
 		    </div>
 	    </div>
 
-        <!-- Javascripts -->jquery-1.9.1
+        <!-- Javascripts -->
         <script src="<?php echo base_url('assets/frontend/js/jquery-1.9.1.js') ?>"></script>
         <script src="<?php echo base_url('assets/frontend/js/bootstrap.min.js') ?>"></script>
         <script src="<?php echo base_url('assets/frontend/js/leafletjs.js') ?>"></script>

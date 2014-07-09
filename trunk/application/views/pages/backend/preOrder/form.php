@@ -15,8 +15,9 @@
 
 <!-- Main content -->
 <section class="content">
-    <form class="form-horizontal" method="post" actiON="<?php echo base_url();?>admin/preOrder/save" ONsubmit="return preOrder()"></br></br>
+    <form class="form-horizontal" method="post" action="<?php echo base_url();?>admin/preOrder/save" onsubmit="return preOrder()"></br></br>
 		<input type="hidden" name="id_po" value="<?php echo @$detail[0]['id_po']?>"/>
+		<input type="hidden" name="persetujuan_po" value="<?php echo @$detail[0]['persetujuan_po']?>"/>
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >No. Pre Order</label>
 			<div class="col-sm-3">

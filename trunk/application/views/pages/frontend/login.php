@@ -16,7 +16,7 @@
 			<div class="row">
 				<div class="col-sm-5">
 					<div class="basic-login">
-						<form role="form" role="form" action="<?php echo base_url();?>home/login/validate">
+						<form role="form" role="form" action="<?php echo base_url();?>home/login/validate" method="post">
 							<?php $msg = $this->session->flashdata('error');?>
 							<?php if ($msg):?>
 								<div class="alert alert-danger" style="text-align:center">

@@ -84,6 +84,26 @@ class tpreOrder extends CI_Model{
 		return $query->result_array();
 	}
 	
+	function detailPoPelanggan($no_pelanggan)
+	{
+		$this->db->where('no_pelanggan', $no_pelanggan);
+		$query = $this->db->get($this->preOrder);	
+		return $query->result_array();
+	}
+	
+	function getListPelanggan($no_pelanggan){
+		$this->db->where('no_pelanggan', $no_pelanggan);
+		$query = $this->db->get($this->preOrder);
+		if($query->num_rows() > 0){
+			foreach($query->result_array() as $row){
+				$result[] = $row;
+			}
+			return $result;
+		} else {
+			return false;
+		}	
+	}
+	
 	function getListSearch($name){
 		$this->db->like('no_po',$$name);
 		$query = $this->db->get($this->preOrder);

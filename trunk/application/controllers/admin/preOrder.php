@@ -100,6 +100,8 @@ class preOrder extends CI_Controller {
 	function delete($id_po)
 	{
 		if ($this->tpreOrder->remove($id_po)){
+			$this->tdetailPreOrder->removeAll($id_po);
+			
 			$this->session->set_flashdata('delete', true);
 			redirect('admin/preOrder','refresh');
 		}

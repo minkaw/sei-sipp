@@ -25,11 +25,10 @@
                     <div class="box-tools">
 						<form role="form" action="<?php echo site_url() ?>admin/manajemenSurat/searchData"  method="post">
                         <div class="input-group">
-								<input type="text" name="name" class="form-control input-sm pull-right" style="width: 240px;" placeholder="Search"/>
-								<div class="input-group-btn">
-									<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-								</div>
-							
+							<input type="text" name="name" class="form-control input-sm pull-right" style="width: 240px;" placeholder="Search"/>
+							<div class="input-group-btn">
+								<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+							</div>
                         </div>
 						</form>
                     </div>
@@ -40,6 +39,7 @@
                     <table class="table table-hover">
                         <tr>
                             <th>#</th>
+                            <th>No. Pelanggan</th>
                             <th>Nama File</th>
 							<th>Status Surat</th>
 							<th>Nama AM</th>
@@ -51,6 +51,7 @@
 						<?php foreach($results as $row):?>
 							<tr>
 								<td><?php echo $i++?></td>
+								<td><?php echo $row['no_pelanggan'];?></td>
 								<td><?php echo $row['nama_file'];?></td>
 								<td><?php echo $row['status_surat'];?></td>
 								<td><?php echo $row['nama_am'];?></td>
@@ -67,7 +68,7 @@
 						<?php endforeach?>
 						<?php else:?>
 						<tr>
-							<td colspan="6" style="text-align:center">Data Masih Kosong</td>
+							<td colspan="7" style="text-align:center">Data Masih Kosong</td>
 						</tr>
 						<?php endif;?>
                     </table>
