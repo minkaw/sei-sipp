@@ -59,6 +59,12 @@ class tdetailPreOrder extends CI_Model{
 		return $this->db->delete($this->detailPreOrder);
 	}	
 	
+	function removeAll($id_po)
+	{
+		$this->db->where('id_po', $id_po);
+		return $this->db->delete($this->detailPreOrder);
+	}	
+	
 	function detail($id_detail_po)
 	{
 		$this->db->where('id_detail_po', $id_detail_po);

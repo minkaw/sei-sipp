@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50508
 File Encoding         : 65001
 
-Date: 2014-07-08 10:05:34
+Date: 2014-07-09 12:01:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -56,9 +56,6 @@ CREATE TABLE `t_aktivitas` (
 -- ----------------------------
 -- Records of t_aktivitas
 -- ----------------------------
-INSERT INTO `t_aktivitas` VALUES ('2', 'AK06072014-1', '0000-00-00', 'tset', '343', '338test', 'ydryyrdyrdydry', 'ON');
-INSERT INTO `t_aktivitas` VALUES ('3', 'AK06072014-3', '0000-00-00', 'test', '343', 'testse', 'testset', 'ON');
-INSERT INTO `t_aktivitas` VALUES ('4', 'AK06072014-4', '0000-00-00', 'tes', '343', 'tse', 'tse', 'ON');
 
 -- ----------------------------
 -- Table structure for `t_detail_preorder`
@@ -70,13 +67,11 @@ CREATE TABLE `t_detail_preorder` (
   `id_prod` int(11) NOT NULL,
   `jumlah_produk` int(11) NOT NULL,
   PRIMARY KEY (`id_detail_po`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of t_detail_preorder
 -- ----------------------------
-INSERT INTO `t_detail_preorder` VALUES ('5', '8', '8', '34');
-INSERT INTO `t_detail_preorder` VALUES ('7', '8', '8', '12');
 
 -- ----------------------------
 -- Table structure for `t_manajemensurat`
@@ -84,17 +79,17 @@ INSERT INTO `t_detail_preorder` VALUES ('7', '8', '8', '12');
 DROP TABLE IF EXISTS `t_manajemensurat`;
 CREATE TABLE `t_manajemensurat` (
   `id_surat` int(11) NOT NULL AUTO_INCREMENT,
+  `no_pelanggan` varchar(20) NOT NULL,
   `nama_file` varchar(150) NOT NULL,
   `status_surat` varchar(10) NOT NULL,
   `no_am` int(11) NOT NULL,
   `keterangan` text NOT NULL,
   PRIMARY KEY (`id_surat`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of t_manajemensurat
 -- ----------------------------
-INSERT INTO `t_manajemensurat` VALUES ('2', 'ttsetset', 'APPROVE', '1', '342342342');
 
 -- ----------------------------
 -- Table structure for `t_pelanggan`
@@ -109,12 +104,11 @@ CREATE TABLE `t_pelanggan` (
   `nik` int(11) NOT NULL,
   `status_plgn` varchar(3) COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`id_plgn`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- ----------------------------
 -- Records of t_pelanggan
 -- ----------------------------
-INSERT INTO `t_pelanggan` VALUES ('7', 'PL07072014-1', 'test pelanggan', 'test', 'test', '9392', 'ON');
 
 -- ----------------------------
 -- Table structure for `t_penjualan`
@@ -132,7 +126,6 @@ CREATE TABLE `t_penjualan` (
 -- ----------------------------
 -- Records of t_penjualan
 -- ----------------------------
-INSERT INTO `t_penjualan` VALUES ('9', '7', 'PJ07072014-1', '2014-07-10', '1');
 
 -- ----------------------------
 -- Table structure for `t_preorder`
@@ -147,13 +140,11 @@ CREATE TABLE `t_preorder` (
   `status_po` varchar(8) COLLATE latin1_general_ci NOT NULL,
   `persetujuan_po` int(11) NOT NULL,
   PRIMARY KEY (`id_po`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- ----------------------------
 -- Records of t_preorder
 -- ----------------------------
-INSERT INTO `t_preorder` VALUES ('8', 'PO07072014-8', 'PL07072014-1', '2014-07-08', '2014-08-22', 'Process', '0');
-INSERT INTO `t_preorder` VALUES ('7', 'PO07072014-7', 'PL07072014-1', '2014-07-07', '2014-07-08', 'Finish', '0');
 
 -- ----------------------------
 -- Table structure for `t_produk`
@@ -186,11 +177,12 @@ CREATE TABLE `t_user` (
   `status_user` varchar(10) COLLATE latin1_general_ci NOT NULL,
   `last_login` date NOT NULL,
   `use_user` int(11) DEFAULT NULL,
+  `no_pelanggan` varchar(20) COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1246 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('1234', 'Aulia Siska Narastiti', '1234a', 'A', 'ON', '2014-07-08', '0');
-INSERT INTO `t_user` VALUES ('1243', 'test', 'test', 'AM', 'ON', '2014-07-07', '1');
+INSERT INTO `t_user` VALUES ('1234', 'Aulia Siska Narastiti', '1234a', 'A', 'ON', '2014-07-09', '0', '');
+INSERT INTO `t_user` VALUES ('1243', 'test', 'test', 'AM', 'ON', '2014-07-07', '1', '');

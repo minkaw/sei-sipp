@@ -18,22 +18,14 @@
 					<div>
 						<h4>Homepage</h4>
 						<ul>
-							<li><a href="index.html">Homepage (Sample 1)</a></li>
-							<li><a href="page-homepage-sample.html">Homepage (Sample 2)</a></li>
+							<li><a href="<?php echo base_url('home/uploadPengajuan') ?>">Upload Pengajuan Pesanan</a></li>
+							<li><a href="<?php echo base_url('home/persetujuanPO') ?>">Persetujuan Pre Order</a></li>
 						</ul>
 					</div>
 					<div>
-						<h4>Homepage</h4>
+						<h4>Produk</h4>
 						<ul>
-							<li><a href="index.html">Homepage (Sample 1)</a></li>
-							<li><a href="page-homepage-sample.html">Homepage (Sample 2)</a></li>
-						</ul>
-					</div>
-					<div>
-						<h4>Homepage</h4>
-						<ul>
-							<li><a href="index.html">Homepage (Sample 1)</a></li>
-							<li><a href="page-homepage-sample.html">Homepage (Sample 2)</a></li>
+							<li><a href="<?php echo base_url('home/daftarPO') ?>">Daftar Produk</a></li>
 						</ul>
 					</div>
 				</div><!-- /mainmenu-submenu-inner -->

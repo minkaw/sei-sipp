@@ -7,9 +7,10 @@ class tmanajemenSurat extends CI_Model{
 		parent::__construct();
 	}
 	
-	function setData($id_surat,$nama_file,$status_surat,$no_am,$keterangan)
+	function setData($id_surat,$no_pelanggan,$nama_file,$status_surat,$no_am,$keterangan)
 	{
 		$this->id_surat= $id_surat;
+		$this->no_pelanggan= $no_pelanggan;
 		$this->nama_file= $nama_file;
 		$this->status_surat= $status_surat;
 		$this->no_am= $no_am;
@@ -34,6 +35,7 @@ class tmanajemenSurat extends CI_Model{
 	{		
 		$arrayData = array(
 			'id_surat'=>$this->id_surat,
+			'no_pelanggan'=>$this->no_pelanggan,
 			'nama_file'=>$this->nama_file,
 			'status_surat'=>$this->status_surat,
 			'no_am'=>$this->no_am,
@@ -45,7 +47,6 @@ class tmanajemenSurat extends CI_Model{
 	function update($id_surat)
 	{
 		$arrayData = array(
-			'nama_file'=>$this->nama_file,
 			'status_surat'=>$this->status_surat,
 			'no_am'=>$this->no_am,
 			'keterangan'=>$this->keterangan

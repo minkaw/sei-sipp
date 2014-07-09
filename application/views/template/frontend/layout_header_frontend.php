@@ -35,7 +35,7 @@
 					<div class="extras">
 						<ul>
 							<?php if($this->session->userdata('usernamePelanggan')): ?>
-								<li>Selamat datang,<?php echo $this->session->userdata('usernamePelanggan'); ?> | <a href="<?php echo base_url('home/login/logout') ?>">Log out</a></li>
+								<li>Selamat datang, No. Pelanggan : <?php echo $this->session->userdata('noPelanggan'); ?> - <?php echo $this->session->userdata('usernamePelanggan'); ?> | <a href="<?php echo base_url('home/login/logout') ?>">Log out</a></li>
 							<?php else:?>
 								<li>Selamat datang di halaman utama PT. SEI | <a href="<?php echo base_url('home/login') ?>">Login</a></li>
 							<?php endif;?>

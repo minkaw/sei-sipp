@@ -7,7 +7,7 @@ class tuser extends CI_Model{
 		parent::__construct();
 	}
 	
-	function setData($id_user,$username,$password,$level,$status_user,$last_login,$use_user)
+	function setData($id_user,$username,$password,$level,$status_user,$last_login,$use_user,$no_pelanggan)
 	{
 		$this->id_user= $id_user;
 		$this->username= $username;
@@ -16,6 +16,7 @@ class tuser extends CI_Model{
 		$this->status_user= $status_user;
 		$this->last_login= $last_login;
 		$this->use_user= $use_user;
+		$this->no_pelanggan= $no_pelanggan;
 	}
 	
 	function getList($page,$uri_segment){
@@ -59,7 +60,8 @@ class tuser extends CI_Model{
 			'level'=>$this->level,
 			'status_user'=>$this->status_user,
 			'last_login'=>$this->last_login,
-			'use_user'=>$this->use_user
+			'use_user'=>$this->use_user,
+			'no_pelanggan'=>$this->no_pelanggan
 		);
 		return $this->db->insert($this->user, $arrayData);
 	}
@@ -72,7 +74,8 @@ class tuser extends CI_Model{
 			'level'=>$this->level,
 			'status_user'=>$this->status_user,
 			'last_login'=>$this->last_login,
-			'use_user'=>$this->use_user
+			'use_user'=>$this->use_user,
+			'no_pelanggan'=>$this->no_pelanggan
 		);
 		$this->db->where('id_user', $id_user);
 		return $this->db->update($this->user, $arrayData);
@@ -165,6 +168,7 @@ class tuser extends CI_Model{
 			
 			$data = array(
 				'usernamePelanggan' => $row['username'],
+				'noPelanggan' => $row['no_pelanggan'],
 				'last_login' => date('d-m-Y')
 			);
 			$this->session->set_userdata($data);

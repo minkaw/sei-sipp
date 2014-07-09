@@ -70,13 +70,14 @@ class User extends CI_Controller {
 		$password = $this->input->post('password');
 		$level = $this->input->post('level');
 		$status_user = $this->input->post('status_user');
+		$no_pelanggan = $this->input->post('no_pelanggan');
 		$last_login = date('Y-m-d');
 		$use_user = 0;
 		
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{
-			$this->tuser->setData($id_user,$username,$password,$level,$status_user,$last_login,$use_user);
+			$this->tuser->setData($id_user,$username,$password,$level,$status_user,$last_login,$use_user,$no_pelanggan);
 			if(!$id_user){
 				$this->tuser->create();
 			}else{
