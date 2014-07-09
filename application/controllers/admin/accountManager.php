@@ -77,11 +77,16 @@ class AccountManager extends CI_Controller {
 		$id_user = $this->input->post('id_user');
 		$email_am = $this->input->post('email_am');
 		$status_am = $this->input->post('status_am');
+		$daftar_report = $this->input->post('daftar_report');
 		
 		$submit = $this->input->post('submit');
 		if($submit)
 		{
+<<<<<<< .mine
+			$this->taccountManager->setData($nik,$no_am,$nama_am,$alamat_am,$tlp_am,$email_am,$id_user,$status_am,$daftar_plgn,$daftar_report);
+=======
 			$this->taccountManager->setData($nik,$no_am,$nama_am,$alamat_am,$tlp_am,$email_am,$id_user,$status_am);
+>>>>>>> .r30
 			if(!$no_am){
 				$this->taccountManager->create();
 				$this->tuser->update_using_user($id_user);
