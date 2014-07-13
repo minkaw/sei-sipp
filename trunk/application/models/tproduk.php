@@ -65,12 +65,6 @@ class tproduk extends CI_Model{
 		return $this->db->update($this->produk, $arrayData);
 	}
 	
-	function remove($id_prod)
-	{
-		$this->db->where('id_prod', $id_prod);
-		return $this->db->delete($this->produk);
-	}	
-	
 	function detail($id_prod)
 	{
 		$this->db->where('id_prod', $id_prod);

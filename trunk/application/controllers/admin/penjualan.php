@@ -90,16 +90,6 @@ class Penjualan extends CI_Controller {
 		redirect('admin/penjualan');
 	}
 	
-	function delete($id_penj)
-	{
-		if ($this->tpenjualan->remove($id_penj)){
-			$this->session->set_flashdata('delete', true);
-			redirect('admin/penjualan','refresh');
-		}
-		$this->session->set_flashdata('error', true);
-		redirect('admin/penjualan');
-	}	
-	
 	function searchData(){
 		$name = $this->input->post('no_penj');
 		$data['menu'] = $this->judulNama;

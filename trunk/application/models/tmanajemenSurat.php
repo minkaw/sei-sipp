@@ -55,12 +55,6 @@ class tmanajemenSurat extends CI_Model{
 		return $this->db->update($this->manajemenSurat, $arrayData);
 	}
 	
-	function remove($id_surat)
-	{
-		$this->db->where('id_surat', $id_surat);
-		return $this->db->delete($this->manajemenSurat);
-	}	
-	
 	function detail($id_surat)
 	{
 		$this->db->where('id_surat', $id_surat);

@@ -3,12 +3,12 @@
 <section class="content-header">
     <h1>
         Manajemen Data
-        <small>Manajemen Surat</small>
+        <small>User</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="<?php echo base_url('admin/home') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Manajemen Data</li>
-        <li class="active">Manajemen Surat</li>
+        <li class="active">User</li>
     </ol>
 </section>
 
@@ -20,7 +20,7 @@
             <div class="box">
                 <div class="box-header">
                     <div class="box-title">
-                        <h3>Daftar Manajemen Surat</h3>
+                        <h3>Daftar User</h3>
 						<a href="<?php echo base_url('admin/user/add') ?>" class="btn btn-primary">Tambah Data</a>
                     </div>
                     <div class="box-tools">
@@ -58,9 +58,6 @@
 								<td style="text-align:center">
 									<a href="<?php echo site_url()?>admin/user/edit/<?php echo $row['id_user']?>" title="Ubah Data">
 										<i class="fa fa-edit"></i>
-									</a>
-									<a href="<?php echo site_url()?>admin/user/delete/<?php echo $row['id_user']?>" title="Hapus Data">
-										<i class="fa fa-times"></i>
 									</a>
 								</td>
 							</tr>

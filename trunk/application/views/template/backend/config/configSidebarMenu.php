@@ -42,7 +42,7 @@
 	</a>
 </li>
 <li class="<?php echo $activeReportMonitoring ?>">
-	<a href="<?php echo base_url('admin/aktivitas') ?>">
+	<a href="<?php echo base_url('admin/reportMonitoring') ?>">
 		<i class="fa fa-gears"></i> <span>Report Monitoring</span>
 	</a>
 </li>

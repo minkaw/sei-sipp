@@ -95,15 +95,6 @@ class AccountManager extends CI_Controller {
 		redirect('admin/accountManager');
 	}
 	
-	function delete($no_am)
-	{
-		if ($this->taccountManager->remove($no_am)){
-			$this->session->set_flashdata('delete', true);
-			redirect('admin/accountManager','refresh');
-		}
-		$this->session->set_flashdata('error', true);
-		redirect('admin/accountManager');
-	}	
 	
 	function searchData(){
 		$name = $this->input->post('name');

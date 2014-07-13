@@ -68,9 +68,6 @@
 									<a href="<?php echo site_url()?>admin/accountManager/edit/<?php echo $row['no_am']?>" title="Ubah Data">
 										<i class="fa fa-edit"></i>
 									</a>
-									<a href="<?php echo site_url()?>admin/accountManager/delete/<?php echo $row['no_am']?>" title="Hapus Data">
-										<i class="fa fa-times"></i>
-									</a>
 								</td>
 							</tr>
 						<?php endforeach?>

@@ -97,18 +97,6 @@ class preOrder extends CI_Controller {
 		redirect('admin/preOrder');
 	}
 	
-	function delete($id_po)
-	{
-		if ($this->tpreOrder->remove($id_po)){
-			$this->tdetailPreOrder->removeAll($id_po);
-			
-			$this->session->set_flashdata('delete', true);
-			redirect('admin/preOrder','refresh');
-		}
-		$this->session->set_flashdata('error', true);
-		redirect('admin/preOrder');
-	}	
-	
 	function searchData(){
 		$name = $this->input->post('name');
 		$data['menu'] = $this->judulNama;

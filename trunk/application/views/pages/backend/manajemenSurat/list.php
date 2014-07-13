@@ -40,7 +40,7 @@
                         <tr>
                             <th>#</th>
                             <th>No. Pelanggan</th>
-                            <th>Nama File</th>
+                            <th>Nama Subjek</th>
 							<th>Status Surat</th>
 							<th>Nama AM</th>
 							<th>Keterangan</th>
@@ -52,16 +52,13 @@
 							<tr>
 								<td><?php echo $i++?></td>
 								<td><?php echo $row['no_pelanggan'];?></td>
-								<td><?php echo $row['nama_file'];?></td>
+								<td><?php echo $row['nama_subjek'];?></td>
 								<td><?php echo $row['status_surat'];?></td>
 								<td><?php echo $row['nama_am'];?></td>
 								<td><?php echo $row['keterangan'];?></td>
 								<td style="text-align:center">
 									<a href="<?php echo site_url()?>admin/manajemenSurat/edit/<?php echo $row['id_surat']?>" title="Ubah Data">
 										<i class="fa fa-edit"></i>
-									</a>
-									<a href="<?php echo site_url()?>admin/manajemenSurat/delete/<?php echo $row['id_surat']?>" title="Hapus Data">
-										<i class="fa fa-times"></i>
 									</a>
 								</td>
 							</tr>

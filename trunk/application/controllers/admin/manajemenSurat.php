@@ -91,19 +91,6 @@ class manajemenSurat extends CI_Controller {
 		redirect('admin/manajemenSurat');
 	}
 	
-	function delete($id_surat)
-	{
-		$getHapus = $this->tmanajemenSurat->detail($id_surat);
-		@unlink("upload/dokumen/".$getHapus[0]['nama_file']);
-		
-		if ($this->tmanajemenSurat->remove($id_surat)){
-			$this->session->set_flashdata('delete', true);
-			redirect('admin/manajemenSurat','refresh');
-		}
-		$this->session->set_flashdata('error', true);
-		redirect('admin/manajemenSurat');
-	}	
-	
 	function searchData(){
 		$name = $this->input->post('name');
 		$data['menu'] = $this->judulNama;

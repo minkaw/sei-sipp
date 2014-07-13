@@ -65,9 +65,6 @@
 									<a href="<?php echo site_url()?>admin/penjualan/edit/<?php echo $row['id_po']?>" title="Ubah Data">
 										<i class="fa fa-edit"></i>
 									</a>
-									<a href="<?php echo site_url()?>admin/penjualan/delete/<?php echo $row['id_po']?>" title="Hapus Data">
-										<i class="fa fa-times"></i>
-									</a>
 								</td>
 							</tr>
 						<?php endforeach?>

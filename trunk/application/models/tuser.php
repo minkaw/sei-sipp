@@ -81,12 +81,6 @@ class tuser extends CI_Model{
 		return $this->db->update($this->user, $arrayData);
 	}
 	
-	function remove($id_user)
-	{
-		$this->db->where('id_user', $id_user);
-		return $this->db->delete($this->user);
-	}	
-	
 	function detail($id_user)
 	{
 		$this->db->where('id_user', $id_user);
