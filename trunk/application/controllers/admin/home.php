@@ -9,6 +9,8 @@ class Home extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
+		$this->load->model('tpreOrder');
+		$this->load->model('tpenjualan');
 		$username = $this->session->userdata('username');
 		if (!$username)
 		  redirect("admin/login");
@@ -17,6 +19,16 @@ class Home extends CI_Controller {
 	function index() {
 		$data['menu'] = $this->judulNama;
 		$this->load->view('pages/backend/home',$data);
+	}
+	
+	function jsonGraphPO(){
+		$data = $this->tpreOrder->graphPO();
+		echo json_encode($data);
+	}
+	
+	function jsonGraphPenjualan(){
+		$data = $this->tpenjualan->graphPenjualan();
+		echo json_encode($data);
 	}
 
 }

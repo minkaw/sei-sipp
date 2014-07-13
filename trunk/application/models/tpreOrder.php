@@ -127,5 +127,22 @@ class tpreOrder extends CI_Model{
 			return false;
 		}	
 	}
+	
+	function graphPO()
+	{
+		$sql="
+			select tgl_po, COUNT(no_po) as jml_po from t_preorder
+			group by tgl_po
+		";
+		$query=$this->db->query($sql);
+		if($query->num_rows() > 0){
+			foreach($query->result_array() as $row){
+				$result[] = $row;
+			}
+			return $result;
+		} else {
+			return false;
+		}	
+	}
 }
 ?>

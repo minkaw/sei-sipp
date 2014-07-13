@@ -72,7 +72,7 @@
 						<?php endforeach?>
 						<?php else:?>
 						<tr>
-							<td colspan="6" style="text-align:center">Data Masih Kosong</td>
+							<td colspan="8" style="text-align:center">Data Masih Kosong</td>
 						</tr>
 						<?php endif;?>
                     </table>
