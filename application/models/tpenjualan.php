@@ -93,5 +93,25 @@ class tpenjualan extends CI_Model{
 			return false;
 		}	
 	}
+	
+	function graphPenjualan()
+	{
+		$sql="
+			select tgl_penj, count(no_penj) as jml_penj from t_penjualan
+			where status_penjualan = '1'
+			group by tgl_penj
+		";
+		$query=$this->db->query($sql);
+		if($query->num_rows() > 0){
+			foreach($query->result_array() as $row){
+				$result[] = $row;
+			}
+			return $result;
+		} else {
+			return false;
+		}	
+	}
+	
+	
 }
 ?>
