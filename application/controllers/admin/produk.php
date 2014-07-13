@@ -87,16 +87,6 @@ class Produk extends CI_Controller {
 		redirect('admin/produk');
 	}
 	
-	function delete($id_prod)
-	{
-		if ($this->tproduk->remove($id_prod)){
-			$this->session->set_flashdata('delete', true);
-			redirect('admin/produk','refresh');
-		}
-		$this->session->set_flashdata('error', true);
-		redirect('admin/produk');
-	}	
-	
 	function searchData(){
 		$name = $this->input->post('name');
 		$data['menu'] = $this->judulNama;

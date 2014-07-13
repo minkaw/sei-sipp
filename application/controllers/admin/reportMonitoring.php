@@ -1,21 +1,21 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Pelanggan extends CI_Controller {
-	var $judulNama = "Manajemen";
+class reportMonitoring extends CI_Controller {
+	var $judulNama = "Report Monitoring";
 	
 	function __construct() {
 		parent::__construct();
 		
-		$this->load->model('tpelanggan');
+		$this->load->model('treportMonitoring');
 		$username = $this->session->userdata('username');
 		if (!$username)
 		  redirect("admin/login");
 	}
 
 	function index() {
-		$config['base_url'] = base_url().'admin/pelanggan/index/';
+		$config['base_url'] = base_url().'admin/reportMonitoring/index/';
 
-		$config['total_rows'] = $this->db->count_all('t_pelanggan');
+		$config['total_rows'] = $this->db->count_all('t_reportMonitoring');
 		$config['per_page'] = 15;
 		$config['uri_segment'] = 3;
 
@@ -46,55 +46,56 @@ class Pelanggan extends CI_Controller {
 		$this->pagination->initialize($config);
 	
 		$data['menu'] = $this->judulNama;
-		$data['results'] = $this->tpelanggan->getList($config['per_page'],$this->uri->segment(3));
-		$this->load->view('pages/backend/pelanggan/list',$data);
+		$data['results'] = $this->treportMonitoring->getList($config['per_page'],$this->uri->segment(3));
+		$this->load->view('pages/backend/reportMonitoring/list',$data);
 	}
 	
 	function add(){
 		$data['mode'] = "Tambah";
 		$data['menu'] = $this->judulNama;
-		$data['noPelanggan'] = $this->tpelanggan->getNoPelanggan();
-		$this->load->view('pages/backend/pelanggan/form',$data);
+		$data['noreportMonitoring'] = $this->treportMonitoring->getNoreportMonitoring();
+		$this->load->view('pages/backend/reportMonitoring/form',$data);
 	}
 	
-	function edit($id_plgn){
+	function edit($id_ak){
 		$data['mode'] = "Ubah";
 		$data['menu'] = $this->judulNama;
-		$data['detail'] = $this->tpelanggan->detail($id_plgn);
-		$this->load->view('pages/backend/pelanggan/form',$data);
+		$data['detail'] = $this->treportMonitoring->detail($id_ak);
+		$this->load->view('pages/backend/reportMonitoring/form',$data);
 	}
 	
 	function save()
 	{
-		$id_plgn = $this->input->post('id_plgn');
-		$no_pelanggan = $this->input->post('no_pelanggan');
-		$nama_plgn = $this->input->post('nama_plgn');
-		$alamat_plgn = $this->input->post('alamat_plgn');
-		$cp_plgn = $this->input->post('cp_plgn');
-		$nik = $this->session->userdata('nik');
-		$status_plgn = $this->input->post('status_plgn');
+		$id_ak = $this->input->post('id_ak');
+		$no_ak = $this->input->post('no_ak');
+		$tgl_ak = date('Y-m-d');
+		$pekerjaan = $this->input->post('pekerjaan');
+		$anggaran = $this->input->post('anggaran');
+		$progress = $this->input->post('progress');
+		$aksi = $this->input->post('aksi');
+		$status_ak = $this->input->post('status_ak');
 		
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{	
-			$this->tpelanggan->setData($id_plgn,$no_pelanggan,$nama_plgn,$alamat_plgn,$cp_plgn,$nik,$status_plgn);
-			if(!$id_plgn){
-				$this->tpelanggan->create();
+			$this->treportMonitoring->setData($id_ak,$no_ak,$tgl_ak,$pekerjaan,$anggaran,$progress,$aksi,$status_ak);
+			if(!$id_ak){
+				$this->treportMonitoring->create();
 			}else{
-				$this->tpelanggan->update($id_plgn);
+				$this->treportMonitoring->update($id_ak);
 			}
 			$this->session->set_flashdata('success', true);
-			redirect('admin/pelanggan');
+			redirect('admin/reportMonitoring');
 		}
 		$this->session->set_flashdata('error', true);
-		redirect('admin/pelanggan');
+		redirect('admin/reportMonitoring');
 	}
 	
 	function searchData(){
 		$name = $this->input->post('name');
 		$data['menu'] = $this->judulNama;
-		$data['results'] = $this->tpelanggan->getListSearch($name);
-		$this->load->view('pages/backend/pelanggan/list',$data);
+		$data['results'] = $this->treportMonitoring->getListSearch($name);
+		$this->load->view('pages/backend/reportMonitoring/list',$data);
 	}
 }
 

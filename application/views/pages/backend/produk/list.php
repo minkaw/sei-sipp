@@ -60,9 +60,6 @@
 									<a href="<?php echo site_url()?>admin/produk/edit/<?php echo $row['id_prod']?>" title="Ubah Data">
 										<i class="fa fa-edit"></i>
 									</a>
-									<a href="<?php echo site_url()?>admin/produk/delete/<?php echo $row['id_prod']?>" title="Hapus Data">
-										<i class="fa fa-times"></i>
-									</a>
 								</td>
 							</tr>
 						<?php endforeach?>

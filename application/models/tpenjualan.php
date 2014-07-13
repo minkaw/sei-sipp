@@ -56,12 +56,6 @@ class tpenjualan extends CI_Model{
 		return $this->db->update($this->penjualan, $arrayData);
 	}
 	
-	function remove($id_penj)
-	{
-		$this->db->where('id_penj', $id_penj);
-		return $this->db->delete($this->penjualan);
-	}	
-	
 	function detail($id_po)
 	{
 		$this->db->where('id_po', $id_po);

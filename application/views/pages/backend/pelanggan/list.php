@@ -64,9 +64,6 @@
 									<a href="<?php echo site_url()?>admin/pelanggan/edit/<?php echo $row['id_plgn']?>" title="Ubah Data">
 										<i class="fa fa-edit"></i>
 									</a>
-									<a href="<?php echo site_url()?>admin/pelanggan/delete/<?php echo $row['id_plgn']?>" title="Hapus Data">
-										<i class="fa fa-times"></i>
-									</a>
 								</td>
 							</tr>
 						<?php endforeach?>

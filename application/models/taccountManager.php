@@ -7,11 +7,9 @@ class taccountManager extends CI_Model{
 		parent::__construct();
 	}
 	
-<<<<<<< .mine
+
 	function setData($nik,$no_am,$nama_am,$alamat_am,$tlp_am,$email_am,$id_user,$status_am,$daftar_plgn,$daftar_report)
-=======
-	function setData($nik,$no_am,$nama_am,$alamat_am,$tlp_am,$email_am,$id_user,$status_am)
->>>>>>> .r30
+
 	{
 		$this->nik= $nik;
 		$this->no_am= $no_am;
@@ -66,13 +64,11 @@ class taccountManager extends CI_Model{
 			'tlp_am'=>$this->tlp_am,
 			'email_am'=>$this->email_am,
 			'id_user'=>$this->id_user,
-<<<<<<< .mine
 			'status_am'=>$this->status_am,
 			'daftar_plgn'=>$this->daftar_plgn,
-			'daftar_report'=>$this->daftar_report
-=======
+			'daftar_report'=>$this->daftar_report,
 			'status_am'=>$this->status_am
->>>>>>> .r30
+
 		);
 		return $this->db->insert($this->accountManager, $arrayData);
 	}
@@ -87,23 +83,15 @@ class taccountManager extends CI_Model{
 			'tlp_am'=>$this->tlp_am,
 			'email_am'=>$this->email_am,
 			'id_user'=>$this->id_user,
-<<<<<<< .mine
 			'status_am'=>$this->status_am,
 			'daftar_plgn'=>$this->daftar_plgn,
-			'daftar_report'=>$this->daftar_report
-=======
+			'daftar_report'=>$this->daftar_report,
 			'status_am'=>$this->status_am
->>>>>>> .r30
+
 		);
 		$this->db->where('no_am', $no_am);
 		return $this->db->update($this->accountManager, $arrayData);
 	}
-	
-	function remove($no_am)
-	{
-		$this->db->where('no_am', $no_am);
-		return $this->db->delete($this->accountManager);
-	}	
 	
 	function detail($no_am)
 	{

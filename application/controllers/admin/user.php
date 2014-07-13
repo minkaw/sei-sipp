@@ -90,16 +90,6 @@ class User extends CI_Controller {
 		redirect('admin/user');
 	}
 	
-	function delete($id_user)
-	{
-		if ($this->tuser->remove($id_user)){
-			$this->session->set_flashdata('delete', true);
-			redirect('admin/user','refresh');
-		}
-		$this->session->set_flashdata('error', true);
-		redirect('admin/user');
-	}	
-	
 	function searchData(){
 		$name = $this->input->post('name');
 		$data['menu'] = $this->judulNama;

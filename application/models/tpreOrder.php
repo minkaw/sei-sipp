@@ -71,12 +71,6 @@ class tpreOrder extends CI_Model{
 		return $this->db->update($this->preOrder, $arrayData);
 	}
 	
-	function remove($id_po)
-	{
-		$this->db->where('id_po', $id_po);
-		return $this->db->delete($this->preOrder);
-	}	
-	
 	function detail($id_po)
 	{
 		$this->db->where('id_po', $id_po);

@@ -61,12 +61,6 @@ class tpelanggan extends CI_Model{
 		return $this->db->update($this->pelanggan, $arrayData);
 	}
 	
-	function remove($id_plgn)
-	{
-		$this->db->where('id_plgn', $id_plgn);
-		return $this->db->delete($this->pelanggan);
-	}	
-	
 	function detail($id_plgn)
 	{
 		$this->db->where('id_plgn', $id_plgn);
