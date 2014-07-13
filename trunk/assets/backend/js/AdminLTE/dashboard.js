@@ -245,7 +245,7 @@ $(function() {
         data: json,
         xkey: 'tgl_po',
         ykeys: ['jml_po'],
-        labels: ['jumlah Pre Order'],
+        labels: ['Jml Pre Order'],
         lineColors: ['#a0d0e0'],
         hideHover: 'auto'
     });
@@ -257,7 +257,7 @@ $(function() {
         barColors: ['#00a65a'],
         xkey: 'tgl_penj',
         ykeys: ['jml_penj'],
-        labels: ['Penjualan'],
+        labels: ['Jml Penjualan'],
         hideHover: 'auto'
     });
     //Fix for charts under tabs
