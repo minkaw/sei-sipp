@@ -18,7 +18,7 @@
 				   
 			<div class="nav-tabs-custom">
 				<ul class="nav nav-tabs pull-right">
-					<li class="pull-left header"><i class="fa fa-inbox"></i> Jumlah Pre Order</li>
+					<li class="pull-left header"><i class="fa fa-inbox"></i> Pre Order</li>
 				</ul>
 				<div class="tab-content no-padding">
 					<div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
