@@ -18,7 +18,6 @@ class UploadPengajuan extends CI_Controller {
 		$id_surat = $this->input->post('id_surat');
 		$no_pelanggan = $this->input->post('no_pelanggan');
 		$status_surat = $this->input->post('status_surat');
-		$description_albumpic = $this->input->post('description_albumpic');
 		$no_am = "";
 		$keterangan = "";
 		

@@ -19,12 +19,12 @@
 		<input type="hidden" name="id_surat" value="<?php echo @$detail[0]['id_surat']?>"/>
 		<input type="hidden" name="no_pelanggan" value="<?php echo @$detail[0]['no_pelanggan']?>"/>
 		<div class="form-group">
-			<label class="col-sm-2 control-label" >Nama Subjek</label>
+			<label class="col-sm-2 control-label" >Nama File</label>
 			<div class="col-sm-5">
 				<div class="input-group">
-					<input class="form-control" type="text" name="nama_subjek" value="<?php echo @$detail[0]['nama_subjek']?>" disabled/>
+					<input class="form-control" type="text" name="nama_file" value="<?php echo @$detail[0]['nama_file']?>" disabled/>
 					<div class="input-group-btn">
-						<button type="button" class="btn" onclick="window.open('<?php echo base_url();?>upload/dokumen/<?php echo @$detail[0]['nama_subjek']?>', '_blank')">Lihat Dokumen</button>
+						<button type="button" class="btn" onclick="window.open('<?php echo base_url();?>upload/dokumen/<?php echo @$detail[0]['nama_file']?>', '_blank')">Lihat Dokumen</button>
 					</div><!-- /btn-group -->
 				</div>
 				
@@ -86,11 +86,11 @@
 </section><!-- /.content -->
 <script>
 		function manajemenSurat(){
-			var nama_subjek = document.getElementById('nf').value;
+			var nama_file = document.getElementById('nf').value;
 			var keterangan = document.getElementById('kt').value;
 			
-			if(nama_subjek == null || nama_subjek == ""){
-				alert ("Lengkapi nama_subjek");
+			if(nama_file == null || nama_file == ""){
+				alert ("Lengkapi nama_file");
 				return false;
 			}else if(keterangan == null || keterangan == ""){
 				alert ("Lengkapi keterangan");

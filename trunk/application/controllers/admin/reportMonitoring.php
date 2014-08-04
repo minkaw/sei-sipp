@@ -46,7 +46,8 @@ class reportMonitoring extends CI_Controller {
 		$this->pagination->initialize($config);
 	
 		$data['menu'] = $this->judulNama;
-		$data['results'] = $this->treportMonitoring->getList($config['per_page'],$this->uri->segment(3));
+		$nik = $this->session->userdata('nik');
+		$data['results'] = $this->treportMonitoring->getList($nik,$config['per_page'],$this->uri->segment(3));
 		$this->load->view('pages/backend/reportMonitoring/list',$data);
 	}
 	
@@ -66,6 +67,7 @@ class reportMonitoring extends CI_Controller {
 	
 	function save()
 	{
+		$nik = $this->session->userdata('nik');
 		$id_report = $this->input->post('id_report');
 		$no_report = $this->input->post('no_report');
 		$tgl_report = date('Y-m-d');
@@ -78,7 +80,7 @@ class reportMonitoring extends CI_Controller {
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{	
-			$this->treportMonitoring->setData($id_report,$no_report,$tgl_report,$pekerjaan,$anggaran,$progress,$aksi,$status_report);
+			$this->treportMonitoring->setData($nik,$id_report,$no_report,$tgl_report,$pekerjaan,$anggaran,$progress,$aksi,$status_report);
 			if(!$id_report){
 				$this->treportMonitoring->create();
 			}else{
