@@ -7,9 +7,7 @@ class taccountManager extends CI_Model{
 		parent::__construct();
 	}
 	
-
-	function setData($nik,$no_am,$nama_am,$alamat_am,$tlp_am,$email_am,$id_user,$status_am,$daftar_plgn,$daftar_report)
-
+	function setData($nik,$no_am,$nama_am,$alamat_am,$tlp_am,$email_am,$id_user,$daftar_plgn,$daftar_report,$status_am)
 	{
 		$this->nik= $nik;
 		$this->no_am= $no_am;
@@ -18,8 +16,10 @@ class taccountManager extends CI_Model{
 		$this->tlp_am= $tlp_am;
 		$this->email_am= $email_am;
 		$this->id_user= $id_user;
-		$this->status_am= $status_am;
+		$this->daftar_plgn= $daftar_plgn;
 		$this->daftar_report= $daftar_report;
+		$this->status_am= $status_am;
+		
 	}
 	
 	function getList($page,$uri_segment){
