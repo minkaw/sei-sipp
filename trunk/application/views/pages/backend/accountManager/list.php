@@ -47,7 +47,7 @@
 							<th>Telepon</th>
 							<th>Email</th>
 							<th>Status AM</th>
-							<th style="text-align:center">Jumlah Pelanggan</th>
+							<th style="text-align:center">Pelanggan</th>
 							<th style="text-align:center">Report</th>
                             <th style="text-align:center">Aksi</th>
                         </tr>
@@ -61,9 +61,9 @@
 								<td><?php echo $row['alamat_am'];?></td>
 								<td><?php echo $row['tlp_am'];?></td>
 								<td><?php echo $row['email_am'];?></td>
-								<td><?php echo $row['status_am'];?></td>
-								<td style="text-align:center"><span class="label label-success"><?php echo $row['jumlah_pelanggan'];?></span></td>
+								<td style="text-align:center"><span class="label label-success"><?php echo $row['daftar_plgn'];?></span></td>
 								<td style="text-align:center"><span class="label label-success"><?php echo $row['daftar_report'];?></span></td>
+								<td><?php echo $row['status_am'];?></td>
 								<td style="text-align:center">
 									<a href="<?php echo site_url()?>admin/accountManager/edit/<?php echo $row['no_am']?>" title="Ubah Data">
 										<i class="fa fa-edit"></i>
