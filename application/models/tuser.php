@@ -133,6 +133,7 @@ class tuser extends CI_Model{
 		$this->db->where('usr.status_user', "ON");
 		$this->db->where('am.status_am', "ON");
 		$this->db->where('usr.level', "AM");
+		
 		$query = $this->db->get();
 		if($query->num_rows == 1){
 			$row = $query->row_array();

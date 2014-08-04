@@ -22,6 +22,7 @@ class Login extends CI_Controller {
 		
 		$queryAdmin = $this->tuser->checkuserAdmin($username,$password);
 		$queryAM = $this->tuser->checkuserAM($username,$password);
+		//echo $this->db->last_query();exit;
 		if($queryAdmin || $queryAM){
 			redirect('admin/home');
 		}else{
