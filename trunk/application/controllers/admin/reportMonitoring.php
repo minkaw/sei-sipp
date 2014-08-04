@@ -57,32 +57,32 @@ class reportMonitoring extends CI_Controller {
 		$this->load->view('pages/backend/reportMonitoring/form',$data);
 	}
 	
-	function edit($id_ak){
+	function edit($id_report){
 		$data['mode'] = "Ubah";
 		$data['menu'] = $this->judulNama;
-		$data['detail'] = $this->treportMonitoring->detail($id_ak);
+		$data['detail'] = $this->treportMonitoring->detail($id_report);
 		$this->load->view('pages/backend/reportMonitoring/form',$data);
 	}
 	
 	function save()
 	{
-		$id_ak = $this->input->post('id_ak');
-		$no_ak = $this->input->post('no_ak');
-		$tgl_ak = date('Y-m-d');
+		$id_report = $this->input->post('id_report');
+		$no_report = $this->input->post('no_report');
+		$tgl_report = date('Y-m-d');
 		$pekerjaan = $this->input->post('pekerjaan');
 		$anggaran = $this->input->post('anggaran');
 		$progress = $this->input->post('progress');
 		$aksi = $this->input->post('aksi');
-		$status_ak = $this->input->post('status_ak');
+		$status_report = $this->input->post('status_report');
 		
 		$submit = $this->input->post('submit');	
 		if($submit)
 		{	
-			$this->treportMonitoring->setData($id_ak,$no_ak,$tgl_ak,$pekerjaan,$anggaran,$progress,$aksi,$status_ak);
-			if(!$id_ak){
+			$this->treportMonitoring->setData($id_report,$no_report,$tgl_report,$pekerjaan,$anggaran,$progress,$aksi,$status_report);
+			if(!$id_report){
 				$this->treportMonitoring->create();
 			}else{
-				$this->treportMonitoring->update($id_ak);
+				$this->treportMonitoring->update($id_report);
 			}
 			$this->session->set_flashdata('success', true);
 			redirect('admin/reportMonitoring');
