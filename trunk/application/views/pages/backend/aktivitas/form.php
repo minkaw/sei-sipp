@@ -16,14 +16,14 @@
     <form class="form-horizontal" method="post" action="<?php echo base_url();?>admin/reportMonitoring/save" onsubmit="return reportMonitoring()"></br></br>
 		<input type="hidden" name="id_report" value="<?php echo @$detail[0]['id_report']?>"/>
 		<div class="form-group">
-			<label class="col-sm-2 control-label" >No Report</label>
+			<label class="col-sm-2 control-label" >No. Report</label>
 			<div class="col-sm-3">
 				<?php
 					$data ='';
 					if(@$detail[0]['no_report']){ 
 						$data = @$detail[0]['no_report'];
 					}else{ 
-						$data = 'R'. date('dmY-'). @$noreportMonitoring;
+						$data = 'R'. date('dmY-h'). @$noreportMonitoring;
 					};
 				?>
 				<input class="form-control" type="text" id="no_report" name="no_report" value="<?php echo $data?>" disabled/>
