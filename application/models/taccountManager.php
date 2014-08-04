@@ -24,9 +24,10 @@ class taccountManager extends CI_Model{
 	
 	function getList($page,$uri_segment){
 		$sql="
-			select am.*, count(pl.nik) as jumlah_pelanggan
+			select am.*, count(pl.nik) as jumlah_pelanggan, count(rm.nik) as jumlah_report
 			from t_accountmanager as am
 			left join t_pelanggan pl on am.nik = pl.nik
+            left join t_reportmonitoring rm on am.nik = rm.nik
 			GROUP BY am.nik
 			limit ".$uri_segment.", ".$page."";
 		$query=$this->db->query($sql);

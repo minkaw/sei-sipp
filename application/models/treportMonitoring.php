@@ -7,8 +7,9 @@ class treportMonitoring extends CI_Model{
 		parent::__construct();
 	}
 	
-	function setData($id_report,$no_report,$tgl_report,$pekerjaan,$anggaran,$progress,$aksi,$status_report)
+	function setData($nik,$id_report,$no_report,$tgl_report,$pekerjaan,$anggaran,$progress,$aksi,$status_report)
 	{
+		$this->nik= $nik;
 		$this->id_report= $id_report;
 		$this->no_report= $no_report;
 		$this->tgl_report= $tgl_report;
@@ -19,7 +20,8 @@ class treportMonitoring extends CI_Model{
 		$this->status_report= $status_report;
 	}
 	
-	function getList($page,$uri_segment){
+	function getList($nik,$page,$uri_segment){
+		$this->db->where('nik', $nik);
 		$query = $this->db->get($this->reportMonitoring, $page, $uri_segment);
 		if($query->num_rows() > 0){
 			foreach($query->result_array() as $row){
@@ -34,6 +36,7 @@ class treportMonitoring extends CI_Model{
 	function create()
 	{		
 		$arrayData = array(
+			'nik'=>$this->nik,
 			'id_report'=>$this->id_report,
 			'no_report'=>$this->no_report,
 			'pekerjaan'=>$this->pekerjaan,
@@ -48,6 +51,7 @@ class treportMonitoring extends CI_Model{
 	function update($id_report)
 	{
 		$arrayData = array(
+			'nik'=>$this->nik,
 			'no_report'=>$this->no_report,
 			'pekerjaan'=>$this->pekerjaan,
 			'anggaran'=>$this->anggaran,

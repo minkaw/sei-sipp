@@ -40,7 +40,7 @@
                         <tr>
                             <th>#</th>
                             <th>No. Pelanggan</th>
-                            <th>Nama Subjek</th>
+                            <th>Nama File</th>
 							<th>Status Surat</th>
 							<th>Nama AM</th>
 							<th>Keterangan</th>
@@ -52,7 +52,7 @@
 							<tr>
 								<td><?php echo $i++?></td>
 								<td><?php echo $row['no_pelanggan'];?></td>
-								<td><?php echo $row['nama_subjek'];?></td>
+								<td><?php echo $row['nama_file'];?></td>
 								<td><?php echo $row['status_surat'];?></td>
 								<td><?php echo $row['nama_am'];?></td>
 								<td><?php echo $row['keterangan'];?></td>
