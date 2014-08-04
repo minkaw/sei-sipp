@@ -13,56 +13,56 @@
 
 <!-- Main content -->
 <section class="content">
-    <form class="form-horizontal" method="post" action="<?php echo base_url();?>admin/aktivitas/save" onsubmit="return aktivitas()"></br></br>
-		<input type="hidden" name="id_ak" value="<?php echo @$detail[0]['id_ak']?>"/>
+    <form class="form-horizontal" method="post" action="<?php echo base_url();?>admin/reportMonitoring/save" onsubmit="return reportMonitoring()"></br></br>
+		<input type="hidden" name="id_report" value="<?php echo @$detail[0]['id_report']?>"/>
 		<div class="form-group">
-			<label class="col-sm-2 control-label" >No Aktivitas</label>
+			<label class="col-sm-2 control-label" >No Report</label>
 			<div class="col-sm-3">
 				<?php
 					$data ='';
-					if(@$detail[0]['no_ak']){ 
-						$data = @$detail[0]['no_ak'];
+					if(@$detail[0]['no_report']){ 
+						$data = @$detail[0]['no_report'];
 					}else{ 
-						$data = 'AK'. date('dmY-'). @$noAktivitas;
+						$data = 'R'. date('dmY-'). @$noreportMonitoring;
 					};
 				?>
-				<input class="form-control" type="text" id="no_ak" name="no_ak" value="<?php echo $data?>" disabled/>
+				<input class="form-control" type="text" id="no_report" name="no_report" value="<?php echo $data?>" disabled/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Nama Pekerjaan</label>
 			<div class="col-sm-5">
-				<input class="form-control" type="text" id="np" name="pekerjaan" value="<?php echo @$detail[0]['pekerjaan']?>"/>
+				<input class="form-control" type="text" id="pk" name="pekerjaan" value="<?php echo @$detail[0]['pekerjaan']?>"/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Jumlah Anggaran (Rp)</label>
 			<div class="col-sm-4">
-				<input class="form-control" type="number" id="ap" name="anggaran" value="<?php echo @$detail[0]['anggaran']?>"/>
+				<input class="form-control" type="number" id="jr" name="anggaran" value="<?php echo @$detail[0]['anggaran']?>"/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Progress</label>
 			<div class="col-sm-6">
-				<textarea class="form-control" cols="100" rows="5" id="cp" name="progress" style="resize:none;"><?php echo @$detail[0]['progress']?></textarea>
+				<textarea class="form-control" cols="100" rows="5" id="pr" name="progress" style="resize:none;"><?php echo @$detail[0]['progress']?></textarea>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label" >Aksi</label>
 			<div class="col-sm-6">
-				<textarea class="form-control" cols="100" rows="5" name="aksi" style="resize:none;"><?php echo @$detail[0]['aksi']?></textarea>
+				<textarea class="form-control" cols="100" rows="5" name="ak" style="resize:none;"><?php echo @$detail[0]['aksi']?></textarea>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 control-label">Status Aktivitas</label>
+			<label class="col-sm-2 control-label">Status Report</label>
 			<div class="col-sm-3">
-				<select class="form-control" name="status_ak">
+				<select class="form-control" name="status_report">
 					<?php $selected1 =  '' ?>
 					<?php $selected2 =  '' ?>
 					
-					<?php if (@$detail[0]['status_ak'] == "ON"):?>
+					<?php if (@$detail[0]['status_report'] == "ON"):?>
 						<?php $selected1 =  'selected="selected"' ?>
-					<?php elseif (@$detail[0]['status_ak'] == "OFF") :?>
+					<?php elseif (@$detail[0]['status_report'] == "OFF") :?>
 						<?php $selected2 =  'selected="selected"' ?>
 					<?php else:?>
 						<?php $selected1 =  '' ?>
@@ -78,29 +78,32 @@
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<input type="submit" name="submit" value="Simpan" class="btn btn-default">
-				<a href="<?php echo base_url('admin/aktivitas') ?>" class="btn btn-primary">Batal</a>
+				<a href="<?php echo base_url('admin/reportMonitoring') ?>" class="btn btn-primary">Batal</a>
 			</div>
 		</div>
     </form>
 </section><!-- /.content -->
 <script>
-		function aktivitas(){
-			var pekerjaan = document.getElementById('np').value;
-			var anggaran = document.getElementById('ap').value;
-			var progress = document.getElementById('cp').value;
-			var no_ak = document.getElementById('no_ak');
+		function reportMonitoring(){
+			var pekerjaan = document.getElementById('pk').value;
+			var anggaran = document.getElementById('ar').value;
+			var progress = document.getElementById('pr').value;
+			var aksi = document.getElementById('ak');
 			
 			if(pekerjaan == null || pekerjaan == ""){
-				alert ("Lengkapi Nama aktivitas");
+				alert ("Lengkapi Nama Pekerjaan");
 				return false;
 			}else if(anggaran == null || anggaran == ""){
-				alert ("Lengkapi Alamat aktivitas");
+				alert ("Lengkapi Anggaran");
 				return false;
 			}else if(progress == null || progress == ""){
-				alert ("Lengkapi Contact Person");
+				alert ("Lengkapi Progress");
+				return false;
+			}else if(aksi == null || aksi == ""){
+				alert ("Lengkapi Aksi");
 				return false;
 			}
-			no_ak.disabled = false;
+			no_report.disabled = false;
 		}
 		</script>
 <?php $this->load->view('template/backend/layout_footer_backend'); ?>
