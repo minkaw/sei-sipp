@@ -21,7 +21,7 @@ class tpelanggan extends CI_Model{
 	function getList($page,$uri_segment){
 		$this->db->select('plg.*, count(po.no_pelanggan) as jml_po');
 		$this->db->join('t_preorder as po', 'po.no_pelanggan = plg.no_pelanggan', 'left');
-		$this->db->group_by("po.no_pelanggan"); 
+		$this->db->group_by("plg.id_plgn"); 
 		$query = $this->db->get($this->pelanggan ." as plg", $page, $uri_segment);
 		if($query->num_rows() > 0){
 			foreach($query->result_array() as $row){
